@@ -11,5 +11,13 @@ namespace Bank
         {
 
         }
+
+        public void calculatePercentage() {
+            // TODO Implement
+        }
+
+        public void setPercentageMechanism() {
+            // TODO Implement
+        }   
     }
 }
