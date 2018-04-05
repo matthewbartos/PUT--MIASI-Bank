@@ -64,7 +64,13 @@ namespace Bank
 
         public void paymentOnDeposit(Deposit depositAccount, float value) {
             depositAccount.balance += value;
+            depositAccount.initialPayment = value;
             depositAccount.bankAccountConnectedWithDeposit.balance -= value;
+        }
+
+        public void closeDeposit(Deposit depositAccount) {
+            depositAccount.closeDeposit();
+            depositAccount = null; // czy to usuwa? 
         }
     }
 }
