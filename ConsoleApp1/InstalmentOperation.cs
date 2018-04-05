@@ -9,7 +9,7 @@ namespace Bank
     {
         private BankProduct bankProductSource;
         private BankProduct bankProductDestination;
-        private OperationType _type;
+     //   private OperationType _type;
         private DateTime date;
         private float _value;
 
@@ -23,39 +23,39 @@ namespace Bank
             }
         }
 
-        public float type {
-            get {
-                return _type;
-            }
+        //public float type {
+        //    get {
+        //        return _type;
+        //    }
 
-            set {
-                this._value = value;
-            }
-        }
+        //    set {
+        //        this._value = value;
+        //    }
+        //}
 
         public void makeTransfer() {
             bankProductSource.balance -= _value;
             bankProductDestination.balance += _value;
-            this.date = DateTime();
-            this._type = OperationType.transfer;
+            this.date = DateTime.Now;
+          //  this._type = OperationType.transfer;
         }
 
         public void deposit() {
             bankProductSource.balance += _value;
-            this.date = DateTime();
-            this._type = OperationType.deposit;
+            this.date = DateTime.Now;
+          //  this._type = OperationType.deposit;
         }
 
         public void withdraw() {
             bankProductSource.balance -= _value;
-            this.date = DateTime();
-            this._type = OperationType.withdraw;
+            this.date = DateTime.Now;
+           // this._type = OperationType.withdraw;
         } 
 
-        public void calculatePercentage() {
-            if(bankProductSource instanceOf )
-            bankProductSource.calculatePercentage();
-        }      
+        //public void calculatePercentage() {
+        //    if(bankProductSource instanceOf )
+        //    bankProductSource.calculatePercentage();
+        //}      
         
         public void changePercentage() {
 

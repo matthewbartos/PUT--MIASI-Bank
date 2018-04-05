@@ -21,15 +21,7 @@ namespace Bank
             }
         }
 
-        public OperationType type {
-            get {
-                return _type;
-            }
-
-            set {
-                this._type = type;
-            }
-        }
+        
 
         
 
@@ -37,19 +29,19 @@ namespace Bank
             bankProductSource.balance -= _value;
             bankProductDestination.balance += _value;
             this.date = DateTime.Now;
-            this._type = OperationType.transfer;
+         //   this._type = OperationType.transfer;
         }
 
         public void deposit() {
             bankProductSource.balance += _value;
             this.date = DateTime.Now;
-            this._type = OperationType.deposit;
+         //   this._type = OperationType.deposit;
         }
 
         public void withdraw() {
             bankProductSource.balance -= _value;
             this.date = DateTime.Now;
-            this._type = OperationType.withdraw;
+         //   this._type = OperationType.withdraw;
         } 
 
         //public void calculatePercentage() {
