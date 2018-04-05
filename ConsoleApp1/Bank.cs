@@ -14,9 +14,9 @@ namespace Bank
         public void makeDeposit(BankProduct destination, float value) {
             BankOperation bankOperation = new BankOperation();
             bankOperation.value = value;
-            bankOperation.desitnation = destination;
+           // bankOperation.desitnation = destination;
 
-            bankOperation.commit();
+           // bankOperation.commit();
         }
 
     }

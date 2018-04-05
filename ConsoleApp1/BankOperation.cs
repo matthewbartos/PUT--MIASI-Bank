@@ -21,39 +21,41 @@ namespace Bank
             }
         }
 
-        public float type {
+        public OperationType type {
             get {
                 return _type;
             }
 
             set {
-                this._value = value;
+                this._type = type;
             }
         }
+
+        
 
         public void makeTransfer() {
             bankProductSource.balance -= _value;
             bankProductDestination.balance += _value;
-            this.date = DateTime();
+            this.date = DateTime.Now;
             this._type = OperationType.transfer;
         }
 
         public void deposit() {
             bankProductSource.balance += _value;
-            this.date = DateTime();
+            this.date = DateTime.Now;
             this._type = OperationType.deposit;
         }
 
         public void withdraw() {
             bankProductSource.balance -= _value;
-            this.date = DateTime();
+            this.date = DateTime.Now;
             this._type = OperationType.withdraw;
         } 
 
-        public void calculatePercentage() {
-            if(bankProductSource instanceOf )
-            bankProductSource.calculatePercentage();
-        }      
+        //public void calculatePercentage() {
+        //    if(bankProductSource instanceOf)
+        //    bankProductSource.calculatePercentage();
+        //}      
         
         public void changePercentage() {
 
