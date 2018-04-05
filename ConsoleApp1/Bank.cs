@@ -8,8 +8,6 @@ namespace Bank
     {
         private List<Client> clients;
         private List<BankProduct> bankProducts;
-        private History bankHistory;
-
 
         public void makeDeposit(BankProduct destination, float value) {
             BankOperation bankOperation = new BankOperation();
