@@ -6,7 +6,25 @@ namespace Bank
 {
     public class Debet
     {
-        private float balance;
+        private float _balance;
         private Interest interest;
+        public float maxDebet;
+
+        public float balance {
+            get {
+                return _balance; 
+            }
+
+            set {
+                this._balance = value;
+            }
+        }
+
+
+        public Debet(float balance, float maxDebet) {
+            this.balance = balance;
+            this.maxDebet = maxDebet;
+        }
+
     }
 }

@@ -4,17 +4,29 @@ using System.Text;
 
 namespace Bank
 {
-    class Credit: BankProduct
+    public class Credit: BankProduct
     {
         private Interest interes;
-        private BankAccount bankAccountConnectedWithCredit;
+        private BankAccount _bankAccountConnectedWithCredit;
         public Credit(string number, BankAccount bankAccount) : base(number)
         {
-            this.bankAccountConnectedWithCredit = bankAccount;
+            this._bankAccountConnectedWithCredit = bankAccount;
+        }
+
+        public BankAccount bankAccountConnectedWithCredit
+        {
+            get
+            {
+                return this._bankAccountConnectedWithCredit;
+            }
+            set
+            {
+                this._bankAccountConnectedWithCredit = value;
+            }
         }
 
         public void calculatePercentage() {
-            // TODO Implement
+            
         }
 
         public void setPercentageMechanism() {

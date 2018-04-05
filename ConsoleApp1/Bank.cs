@@ -13,7 +13,6 @@ namespace Bank
             BankOperation bankOperation = new BankOperation();
             bankOperation.value = value;
            // bankOperation.desitnation = destination;
-
            // bankOperation.commit();
         }
 
@@ -59,7 +58,13 @@ namespace Bank
         }
 
         public void withdrawFromAccount(BankAccount source, float value) {
-            source.balance -= value;
+            if(source.debet != null && value > source.balance && value + source.debet.balance <= source.debet.maxDebet ) {
+                source.balance = 0;
+                source.debet.balance += value - source.balance;
+            } else if(value <= source.balance) {
+                source.balance -= value;
+            }
+
         }
 
         public void paymentOnDeposit(Deposit depositAccount, float value) {
@@ -70,7 +75,16 @@ namespace Bank
 
         public void closeDeposit(Deposit depositAccount) {
             depositAccount.closeDeposit();
-            depositAccount = null; // czy to usuwa? 
+            depositAccount = null; // czy to usuwa? chyba tak
         }
+
+
+        public void takeLoan(Credit creditAccount, float value) {
+            creditAccount.balance -= value;
+            creditAccount.bankAccountConnectedWithCredit.balance += value;
+        }
+
+
+
     }
 }
