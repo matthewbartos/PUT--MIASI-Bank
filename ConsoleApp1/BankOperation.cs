@@ -4,27 +4,10 @@ using System.Text;
 
 namespace Bank
 {
-
-    enum OperationType 
-    {
-        deposit, //wpłata w bankomacie
-        withdraw, //wypłata w bankomacie
-        transfer, //przelew bankowy
-        calculatePercentage, //naliczanie odsetek
-        changePercentage, //zmiana mechanizmu dosetkowego
-        setInterest, // zalozenie lokaty
-        breakInterest, //zerwanie lokaty
-        credit, //zaciagniecie kredytu
-        instalment, //splata raty kredytu
-        debit, //stworzenie debetu
-        raport //wykonanie raportu
-    }
-
     class BankOperation
     {
         private BankProduct bankProductSource;
         private BankProduct bankProductDestination;
-        private OperationType _type;
         private DateTime date;
         private float _value;
 
