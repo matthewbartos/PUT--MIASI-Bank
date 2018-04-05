@@ -64,7 +64,6 @@ namespace Bank
             } else if(value <= source.balance) {
                 source.balance -= value;
             }
-
         }
 
         public void paymentOnDeposit(Deposit depositAccount, float value) {
@@ -78,13 +77,9 @@ namespace Bank
             depositAccount = null; // czy to usuwa? chyba tak
         }
 
-
         public void takeLoan(Credit creditAccount, float value) {
             creditAccount.balance -= value;
             creditAccount.bankAccountConnectedWithCredit.balance += value;
         }
-
-
-
     }
 }

@@ -1,12 +1,11 @@
 ﻿using System;
 
-public class Percentage
+public abstract class Percentage
 {
-    public Percentage()
-	{
+    public float currentPercent;
+
+    public Percentage() {
 	}
 
-    public float calculate() {
-        return 0;
-    }
+    public abstract float calculate(float balance);
 }

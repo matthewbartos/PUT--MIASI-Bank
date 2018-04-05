@@ -24,13 +24,5 @@ namespace Bank
                 this._bankAccountConnectedWithCredit = value;
             }
         }
-
-        public void calculatePercentage() {
-            
-        }
-
-        public void setPercentageMechanism() {
-            // TODO Implement
-        }   
     }
 }

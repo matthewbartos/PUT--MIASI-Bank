@@ -21,7 +21,6 @@ namespace Bank
             }
         }
 
-
         public BankProduct(string number)
         {
             this.establishDate = DateTime.Now;
@@ -30,8 +29,9 @@ namespace Bank
             this.balance = 0;
         }
         
-        public float calculatePercentage() {
-            return this.percentageMechanism.calculate(); 
+        public void calculatePercentage() {
+            var income = this.percentageMechanism.calculate(balance);
+            balance += income;
         }
 
         public void setPercentageMechanism(Percentage mechanism) {
