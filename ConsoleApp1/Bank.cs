@@ -63,7 +63,8 @@ namespace Bank
         }
 
         public void paymentOnDeposit(Deposit depositAccount, float value) {
-            
+            depositAccount.balance += value;
+            depositAccount.bankAccountConnectedWithDeposit.balance -= value;
         }
     }
 }

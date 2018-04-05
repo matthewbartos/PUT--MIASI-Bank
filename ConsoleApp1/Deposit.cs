@@ -4,11 +4,10 @@ using System.Text;
 
 namespace Bank
 {
-    class Deposit: BankProduct
+    public class Deposit: BankProduct
     {
         private Interest interest;
         private BankAccount _bankAccountConnectedWithDeposit;
-        private DateTime
 
         public Deposit(string number, BankAccount bankAccount) : base(number) {
             this._bankAccountConnectedWithDeposit = bankAccount;
