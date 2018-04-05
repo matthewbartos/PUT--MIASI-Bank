@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Bank
 {
-    class BankOperation
+    public class BankOperation
     {
         private BankProduct bankProductSource;
         private BankProduct bankProductDestination;

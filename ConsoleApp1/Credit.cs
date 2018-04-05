@@ -7,9 +7,10 @@ namespace Bank
     class Credit: BankProduct
     {
         private Interest interes;
-        public Credit(string number) : base(number)
+        private BankAccount bankAccountConnectedWithCredit;
+        public Credit(string number, BankAccount bankAccount) : base(number)
         {
-
+            this.bankAccountConnectedWithCredit = bankAccount;
         }
 
         public void calculatePercentage() {

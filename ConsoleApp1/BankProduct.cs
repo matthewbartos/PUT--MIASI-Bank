@@ -8,6 +8,8 @@ namespace Bank
     {
         private string accountNumber;
         private float _balance;
+        private List<BankOperation> history;
+        private Percentage percentageMechanism;
 
         public float balance {
             get {
@@ -22,16 +24,21 @@ namespace Bank
 
         public BankProduct(string number)
         {
+            this.history = new List<BankOperation>();
             this.accountNumber = number;
             this.balance = 0;
         }
         
-        public void calculatePercentage() {
-            // nop
+        public float calculatePercentage() {
+            return 
         }
 
-        public void setPercentageMechanism() {
-            // nop
+        public void setPercentageMechanism(Percentage mechanism) {
+            this.percentageMechanism = mechanism;
+        }
+
+        public void addOperation(BankOperation bankOperation) {
+            this.history.Add(bankOperation);
         }
     }
 }

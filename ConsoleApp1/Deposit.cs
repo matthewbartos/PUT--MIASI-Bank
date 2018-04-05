@@ -7,8 +7,10 @@ namespace Bank
     class Deposit: BankProduct
     {
         private Interest interest;
-        public Deposit(string number) : base(number) {
+        private BankAccount bankAccountConnectedWithDeposit;
 
+        public Deposit(string number, BankAccount bankAccount) : base(number) {
+            this.bankAccountConnectedWithDeposit = bankAccount;
         }
     }
 }
