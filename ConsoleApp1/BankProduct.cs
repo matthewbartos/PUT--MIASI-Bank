@@ -30,7 +30,7 @@ namespace Bank
         }
         
         public float calculatePercentage() {
-            return 
+            return this.percentageMechanism.calculate(); 
         }
 
         public void setPercentageMechanism(Percentage mechanism) {

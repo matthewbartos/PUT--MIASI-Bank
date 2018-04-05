@@ -7,6 +7,6 @@ public class Percentage
 	}
 
     public float calculate() {
-        
+        return 0;
     }
 }

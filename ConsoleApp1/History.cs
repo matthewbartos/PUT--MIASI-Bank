@@ -6,7 +6,7 @@ namespace Bank
 {
     public class History
     {
-        private List<BankOperation> operations;
+        private List<BankOperation> allBankOperations;
 
     }
 }
