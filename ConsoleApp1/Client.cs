@@ -9,7 +9,7 @@ namespace Bank
         private string name;
         private string surname;
 
-        private Client()
+        private Client(string name, string surname)
         {
             this.name = name;
             this.surname = surname;
