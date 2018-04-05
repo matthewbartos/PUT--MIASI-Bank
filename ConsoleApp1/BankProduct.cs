@@ -10,7 +10,7 @@ namespace Bank
         private float _balance;
         private List<BankOperation> history;
         private Percentage percentageMechanism;
-
+        private DateTime establishDate;
         public float balance {
             get {
                 return this._balance;
@@ -24,6 +24,7 @@ namespace Bank
 
         public BankProduct(string number)
         {
+            this.establishDate = DateTime.Now;
             this.history = new List<BankOperation>();
             this.accountNumber = number;
             this.balance = 0;

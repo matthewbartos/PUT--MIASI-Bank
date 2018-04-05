@@ -21,49 +21,7 @@ namespace Bank
             }
         }
 
-        
 
-        
-
-        public void makeTransfer() {
-            bankProductSource.balance -= _value;
-            bankProductDestination.balance += _value;
-            this.date = DateTime.Now;
-         //   this._type = OperationType.transfer;
-        }
-
-        public void deposit() {
-            bankProductSource.balance += _value;
-            this.date = DateTime.Now;
-         //   this._type = OperationType.deposit;
-        }
-
-        public void withdraw() {
-            bankProductSource.balance -= _value;
-            this.date = DateTime.Now;
-         //   this._type = OperationType.withdraw;
-        } 
-
-        //public void calculatePercentage() {
-        //    if(bankProductSource instanceOf)
-        //    bankProductSource.calculatePercentage();
-        //}      
-        
-        public void changePercentage() {
-
-        }
-
-        public void setUpInterest() {
-
-        }
-
-        public void breakInterest() {
-
-        }
-
-        public void credit() {
-
-        }
         
     }
 }

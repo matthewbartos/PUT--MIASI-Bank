@@ -31,19 +31,39 @@ namespace Bank
             return finalString;
         }
 
-        public void createBankAccount(Client client)
-        {
+        public void createBankAccount(Client client) {
             String number = generateUniqueAccountNumber();
             BankAccount bankAccount = new BankAccount(number, "", client);
             bankProducts.Add(bankAccount);
         }
 
-        public void createBankCredit(BankAccount account)
-        {
+        public void createBankCredit(BankAccount account) {
             String number = generateUniqueAccountNumber();
             Credit bankCredit = new Credit(number, account);
             bankProducts.Add(bankCredit);
         }
 
+        public void createDeposit(BankAccount account) {
+            String number = generateUniqueAccountNumber();
+            Deposit deposit = new Deposit(number, account);
+            bankProducts.Add(deposit);
+        }
+
+        public void transferMoney(BankAccount source, BankAccount destination, float value) {
+            source.balance -= value;
+            destination.balance += value;
+        }
+
+        public void paymentOnAccount(BankAccount destination, float value) {
+            destination.balance += value;
+        }
+
+        public void withdrawFromAccount(BankAccount source, float value) {
+            source.balance -= value;
+        }
+
+        public void paymentOnDeposit(Deposit depositAccount, float value) {
+            
+        }
     }
 }
