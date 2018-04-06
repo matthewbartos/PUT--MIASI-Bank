@@ -15,9 +15,9 @@ namespace Bank.Tests
         [Test]
         public void ReturnFalseGivenValueOf1()
         {
-            var result = _primeService.IsPrime(1);
+            var result = _bank.generateUniqueAccountNumber();
 
-            Assert.IsFalse(result, "1 should not be prime");
+            Assert.AreEqual("0123456789", result);
         }
     }
 }
