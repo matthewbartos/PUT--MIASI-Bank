@@ -10,7 +10,7 @@ namespace Bank
 
         public override float calculate(float balance)
         {
-            return (this.currentPercent / 100) * balance;
+            return (this.currentPercent / 100.0f) * balance;
         }
     }
 }

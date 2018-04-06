@@ -27,7 +27,7 @@ namespace Bank
             this.history = new List<BankOperation>();
             this.accountNumber = number;
             this.balance = 0;
-
+            this.percentageMechanism = new LinearPercentage(2.0f);
    
         }
 
@@ -37,7 +37,10 @@ namespace Bank
         }
 
         public void setPercentageMechanism(Percentage mechanism) {
-            this.percentageMechanism = mechanism;
+            if( mechanism != null)
+            {
+                this.percentageMechanism = mechanism;
+            }
         }
 
         public void addOperation(BankOperation bankOperation) {
