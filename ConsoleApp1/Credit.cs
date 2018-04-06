@@ -6,7 +6,6 @@ namespace Bank
 {
     public class Credit: BankProduct
     {
-        private Interest interes;
         private BankAccount _bankAccountConnectedWithCredit;
         public Credit(string number, BankAccount bankAccount) : base(number)
         {

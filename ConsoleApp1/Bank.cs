@@ -9,13 +9,6 @@ namespace Bank
         private List<Client> clients;
         private List<BankProduct> bankProducts;
 
-        public void makeDeposit(BankProduct destination, float value) {
-            BankOperation bankOperation = new BankOperation();
-            bankOperation.value = value;
-           // bankOperation.desitnation = destination;
-           // bankOperation.commit();
-        }
-
         public String generateUniqueAccountNumber() {
             var chars = "0123456789";
             var stringChars = new char[9];

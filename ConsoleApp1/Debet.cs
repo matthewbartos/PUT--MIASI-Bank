@@ -7,7 +7,6 @@ namespace Bank
     public class Debet
     {
         private float _balance;
-        private Interest interest;
         public float maxDebet;
 
         public float balance {

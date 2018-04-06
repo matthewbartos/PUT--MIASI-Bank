@@ -9,9 +9,14 @@ namespace Bank
         private List<BankProduct> products;
         private Filter filter;
 
-        public Raport()
+        public Raport(List<BankProduct> products)
         {
+            this.products = products;
+        }
 
+        public void filterUsingParameters(float valueFrom, float valueTo, BankProduct product)
+        {
+            this.filter = new Filter(valueFrom, valueTo, null, null, product);
         }
     }
 }

@@ -2,9 +2,20 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ConsoleApp1
+namespace Bank
 {
-    class Class2
+    public class CubicPercentage : Percentage
     {
+        public CubicPercentage(float percent) : base()
+        {
+            this.currentPercent = percent;
+        }
+
+        public override float calculate(float balance)
+        {
+            var income = (this.currentPercent / 100) * balance;
+            this.currentPercent = this.currentPercent * this.currentPercent;
+            return income;
+        }
     }
 }

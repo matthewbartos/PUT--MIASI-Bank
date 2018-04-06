@@ -27,9 +27,11 @@ namespace Bank
             this.history = new List<BankOperation>();
             this.accountNumber = number;
             this.balance = 0;
+
+   
         }
-        
-        public void calculatePercentage() {
+
+        private void calculatePercentage() { // timer bedzie wywolywac te funkcje co jakis czas
             var income = this.percentageMechanism.calculate(balance);
             balance += income;
         }
@@ -41,5 +43,6 @@ namespace Bank
         public void addOperation(BankOperation bankOperation) {
             this.history.Add(bankOperation);
         }
+       
     }
 }

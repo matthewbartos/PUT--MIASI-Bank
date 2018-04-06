@@ -6,7 +6,6 @@ namespace Bank
 {
     public class Deposit: BankProduct
     {
-        private Interest interest;
         private BankAccount _bankAccountConnectedWithDeposit;
         private float income;
         public float initialPayment;
