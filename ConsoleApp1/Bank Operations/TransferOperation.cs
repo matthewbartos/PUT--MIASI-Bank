@@ -4,7 +4,6 @@ using System.Text;
 
 namespace Bank
 {
-
     class TransferOperation : BankOperation
     {
         private BankProduct bankProductSource;

@@ -44,6 +44,7 @@ namespace Bank
         public void transferMoney(BankAccount source, BankAccount destination, float value) {
             source.balance -= value;
             destination.balance += value;
+            HistoryManager.Instance.addBankOperation(new TransferOperation());
         }
 
         public void paymentOnAccount(BankAccount destination, float value) {
