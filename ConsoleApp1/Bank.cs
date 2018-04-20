@@ -41,10 +41,15 @@ namespace Bank
             bankProducts.Add(deposit);
         }
 
+
+
         public void transferMoney(BankAccount source, BankAccount destination, float value) {
-            source.balance -= value;
-            destination.balance += value;
-            HistoryManager.Instance.addBankOperation(new TransferOperation());
+
+            IBankOperation operation = new TransferOperation();
+            operation.SetOperationData(source, destination, null, value);
+            operation.Execute();
+        
+            HistoryManager.Instance.addBankOperation(operation);
         }
 
         public void paymentOnAccount(BankAccount destination, float value) {
@@ -68,7 +73,7 @@ namespace Bank
 
         public void closeDeposit(Deposit depositAccount) {
             depositAccount.closeDeposit();
-            depositAccount = null; // czy to usuwa? chyba tak
+            depositAccount = null;
         }
 
         public void takeLoan(Credit creditAccount, float value) {

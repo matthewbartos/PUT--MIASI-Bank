@@ -4,9 +4,23 @@ using System.Text;
 
 namespace Bank
 {
-    class TransferOperation : BankOperation
+    class TransferOperation : IBankOperation
     {
         private BankProduct bankProductSource;
-        private DateTime date;
+        private BankProduct bankProductDestination;
+        private float value;
+
+        public void Execute()
+        {
+            bankProductSource.balance -= value;
+            bankProductDestination.balance += value;
+        }
+
+        public void SetOperationData(BankProduct bankProductSource, BankProduct bankProductDestination, DateTime? date, float value)
+        {
+            this.bankProductSource = bankProductSource;
+            this.bankProductDestination = bankProductDestination;
+            this.value = value;
+        }
     }
 }

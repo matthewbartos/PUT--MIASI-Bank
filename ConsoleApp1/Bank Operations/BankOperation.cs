@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Bank
 {
-    public class BankOperation
+    public class BankOperation : IOperation
     {
         private BankProduct bankProductSource;
         private BankProduct bankProductDestination;
@@ -21,7 +21,9 @@ namespace Bank
             }
         }
 
-
-        
+        public void Execute()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

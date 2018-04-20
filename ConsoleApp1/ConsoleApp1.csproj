@@ -6,11 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Bank Operations\IOperation.cs" />
     <Compile Remove="Class1.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Bank Operations\" />
+    <Compile Include="Bank Operations\IBankOperation.cs" />
   </ItemGroup>
 
   <ItemGroup>

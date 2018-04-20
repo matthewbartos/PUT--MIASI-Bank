@@ -8,7 +8,7 @@ namespace Bank
     {
         private string accountNumber;
         private float _balance;
-        private List<BankOperation> history;
+        private List<IBankOperation> history;
         private Percentage percentageMechanism;
         private DateTime establishDate;
         public float balance {
@@ -24,7 +24,7 @@ namespace Bank
         public BankProduct(string number)
         {
             this.establishDate = DateTime.Now;
-            this.history = new List<BankOperation>();
+            this.history = new List<IBankOperation>();
             this.accountNumber = number;
             this.balance = 0;
             this.percentageMechanism = new LinearPercentage(2.0f);
@@ -43,7 +43,7 @@ namespace Bank
             }
         }
 
-        public void addOperation(BankOperation bankOperation) {
+        public void addOperation(IBankOperation bankOperation) {
             this.history.Add(bankOperation);
         }
        

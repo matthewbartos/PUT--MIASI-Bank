@@ -6,7 +6,7 @@ namespace Bank
 {
     public sealed class HistoryManager
     {
-        private List<BankOperation> allBankOperations;
+        private List<IBankOperation> allBankOperations;
 
         private static readonly Lazy<HistoryManager> lazy =
             new Lazy<HistoryManager>(() => new HistoryManager());
@@ -15,10 +15,10 @@ namespace Bank
 
         private HistoryManager()
         {
-            this.allBankOperations = new List<BankOperation>();
+            this.allBankOperations = new List<IBankOperation>();
         }
 
-        public void addBankOperation(BankOperation bankOperation) {
+        public void addBankOperation(IBankOperation bankOperation) {
             this.allBankOperations.Add(bankOperation);
         }
     }
