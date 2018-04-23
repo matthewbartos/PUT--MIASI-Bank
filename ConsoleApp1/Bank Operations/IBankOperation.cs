@@ -6,7 +6,7 @@ namespace Bank
 {
     public interface IBankOperation
     {
-        void SetOperationData(BankProduct bankProductSource = null, BankProduct bankProductDestination = null, DateTime? date = null, float value = 0);
+        void SetOperationData(BankAccount bankProductSource = null, BankAccount bankProductDestination = null, DateTime? date = null, float value = 0);
 
         void Execute();
     }

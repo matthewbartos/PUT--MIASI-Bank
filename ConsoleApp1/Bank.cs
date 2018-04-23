@@ -53,16 +53,26 @@ namespace Bank
         }
 
         public void paymentOnAccount(BankAccount destination, float value) {
-            destination.balance += value;
+            //destination.balance += value;
+            IBankOperation operation = new TransferOperation();
+            operation.SetOperationData(null, destination, null, value);
+            operation.Execute();
+
+            HistoryManager.Instance.addBankOperation(operation);
         }
 
         public void withdrawFromAccount(BankAccount source, float value) {
-            if(source.debet != null && value > source.balance && value + source.debet.balance <= source.debet.maxDebet ) {
-                source.balance = 0;
-                source.debet.balance += value - source.balance;
-            } else if(value <= source.balance) {
-                source.balance -= value;
-            }
+            IBankOperation operation = new WithdrawOperation();
+            operation.SetOperationData(source, null, null, value);
+            operation.Execute();
+            HistoryManager.Instance.addBankOperation(operation);
+
+            //if(source.debet != null && value > source.balance && value + source.debet.balance <= source.debet.maxDebet ) {
+            //    source.balance = 0;
+            //    source.debet.balance += value - source.balance;
+            //} else if(value <= source.balance) {
+            //    source.balance -= value;
+            //}
         }
 
         public void paymentOnDeposit(Deposit depositAccount, float value) {
