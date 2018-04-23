@@ -96,8 +96,12 @@ namespace Bank
         }
 
         public void takeLoan(Credit creditAccount, float value) {
-            creditAccount.balance -= value;
-            creditAccount.bankAccountConnectedWithCredit.balance += value;
+            //creditAccount.balance -= value;
+            //creditAccount.bankAccountConnectedWithCredit.balance += value;
+            IBankOperation operation = new TakeLoan();
+            operation.SetOperationData(creditAccount, null, null, value);
+            operation.Execute();
+            HistoryManager.Instance.addBankOperation(operation);
         }
     }
 }
