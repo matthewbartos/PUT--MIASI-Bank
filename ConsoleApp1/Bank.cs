@@ -86,8 +86,13 @@ namespace Bank
         }
 
         public void closeDeposit(Deposit depositAccount) {
-            depositAccount.closeDeposit();
-            depositAccount = null;
+            //depositAccount.closeDeposit();
+            //depositAccount = null;
+            IBankOperation operation = new CloseDeposit();
+            operation.SetOperationData(depositAccount, null, null, 0);
+            operation.Execute();
+            HistoryManager.Instance.addBankOperation(operation);
+
         }
 
         public void takeLoan(Credit creditAccount, float value) {
