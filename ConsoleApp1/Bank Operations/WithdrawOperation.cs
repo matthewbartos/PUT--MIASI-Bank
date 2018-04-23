@@ -14,6 +14,7 @@ namespace Bank
 
         public void Execute()
         {
+
             if (bankProductSource.debet != null && value > bankProductSource.balance && value + bankProductSource.debet.balance <= bankProductSource.debet.maxDebet)
             {
                 bankProductSource.balance = 0;

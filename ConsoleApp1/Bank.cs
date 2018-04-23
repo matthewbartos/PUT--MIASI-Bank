@@ -76,9 +76,13 @@ namespace Bank
         }
 
         public void paymentOnDeposit(Deposit depositAccount, float value) {
-            depositAccount.balance += value;
-            depositAccount.initialPayment = value;
-            depositAccount.bankAccountConnectedWithDeposit.balance -= value;
+            //depositAccount.balance += value;
+            //depositAccount.initialPayment = value;
+            //depositAccount.bankAccountConnectedWithDeposit.balance -= value;
+            IBankOperation operation = new DepositOperation();
+            operation.SetOperationData(depositAccount, null, null, value);
+            operation.Execute();
+            HistoryManager.Instance.addBankOperation(operation);
         }
 
         public void closeDeposit(Deposit depositAccount) {

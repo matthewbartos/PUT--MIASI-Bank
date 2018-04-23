@@ -5,9 +5,24 @@ using System.Text;
 namespace Bank
 {
 
-    class DepositOperation : BankOperation
+    class DepositOperation : IBankOperation
     {
-        private BankProduct bankProductSource;
-        private DateTime date;
+     
+        Deposit depositAccount;
+        float value;
+
+        public void Execute()
+        {
+            depositAccount.balance += value;
+            depositAccount.initialPayment = value;
+            depositAccount.bankAccountConnectedWithDeposit.balance -= value;
+
+        }
+
+        public void SetOperationData(Deposit bankProductSource, BankProduct bankProductDestination, DateTime? date, float value)
+        {
+            this.depositAccount = bankProductSource;
+            this.value = value;
+        }
     }
 }
