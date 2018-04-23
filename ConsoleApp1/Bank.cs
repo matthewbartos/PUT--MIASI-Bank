@@ -7,7 +7,7 @@ namespace Bank
     public class Bank
     {
         private List<Client> clients;
-        private List<BankProduct> bankProducts;
+        public List<BankProduct> bankProducts;
 
         public String generateUniqueAccountNumber() {
             var chars = "0123456789";
@@ -30,15 +30,23 @@ namespace Bank
         }
 
         public void createBankCredit(BankAccount account) {
-            String number = generateUniqueAccountNumber();
-            Credit bankCredit = new Credit(number, account);
-            bankProducts.Add(bankCredit);
+            //String number = generateUniqueAccountNumber();
+            //Credit bankCredit = new Credit(number, account);
+            //bankProducts.Add(bankCredit);
+            IBankCreate operation = new CreateBankCredit();
+            operation.SetOperationData(account);
+            operation.Create();
+
+            //HistoryManager.Instance.addBankOperation(operation);
         }
 
         public void createDeposit(BankAccount account) {
-            String number = generateUniqueAccountNumber();
-            Deposit deposit = new Deposit(number, account);
-            bankProducts.Add(deposit);
+            //String number = generateUniqueAccountNumber();
+            //Deposit deposit = new Deposit(number, account);
+            //bankProducts.Add(deposit);
+            IBankCreate operation = new CreateDeposit();
+            operation.SetOperationData(account);
+            operation.Create();
         }
 
 

@@ -6,7 +6,7 @@ namespace Bank
 {
     public interface IBankCreate
     {
-        void SetOperationData(Client client = null, BankAccount account=null);
+        void SetOperationData(BankAccount account=null);
 
         void Create();
     }
