@@ -6,8 +6,31 @@ namespace Bank
 {
     public class Bank
     {
+        // Unique bank id
+        private String id;
         private List<Client> clients;
         public List<BankProduct> bankProducts;
+        private KIR kir;
+
+        public Bank()
+        {
+            id = generateUniqueBankId();
+            kir = KIR.Instance.registerBank(id);
+        }
+
+        private String generateUniqueBankId() {
+            var chars = "QWERTYUIOPASDFGHJKLZXCVBNM0123456789";
+            var stringChars = new char[35];
+            var random = new Random();
+
+            for (int i = 0; i<stringChars.Length; i++)
+            {
+                stringChars[i] = chars[random.Next(chars.Length)];
+            }
+
+            var finalString = new String(stringChars);
+            return finalString;
+        }
 
         public String generateUniqueAccountNumber() {
             var chars = "0123456789";
