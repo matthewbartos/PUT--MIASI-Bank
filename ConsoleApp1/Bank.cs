@@ -10,12 +10,12 @@ namespace Bank
         private String id;
         private List<Client> clients;
         public List<BankProduct> bankProducts;
-        private KIR kir;
+
 
         public Bank()
         {
             id = generateUniqueBankId();
-            kir = KIR.Instance.registerBank(id);
+            KIR.Instance.registerBank(this);
         }
 
         private String generateUniqueBankId() {

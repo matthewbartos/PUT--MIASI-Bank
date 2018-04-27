@@ -1,4 +1,7 @@
-﻿namespace Bank
+﻿using System;
+using System.Collections.Generic;
+
+namespace Bank
 {
     public sealed class KIR
     {
@@ -24,7 +27,7 @@
             //check bank id in allBank and find account
         }
 
-        public Void transferMoney(String bankIdSource, String bankIdDestination, BankProduct bankProductSource, BankProduct bankProductDestination, DateTime date, Float value)
+        public void transferMoney(String bankIdSource, String bankIdDestination, BankProduct bankProductSource, BankProduct bankProductDestination, DateTime date, float value)
         {
             // check if destination bank exists & destination account exists
             // if no = return money to source account

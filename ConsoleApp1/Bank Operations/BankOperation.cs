@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Bank
 {
-    public class BankOperation : IOperation
+    public class BankOperation : IBankOperation
     {
         private BankProduct bankProductSource;
         private BankProduct bankProductDestination;
@@ -24,6 +24,11 @@ namespace Bank
         public void Execute()
         {
             throw new NotImplementedException();
+        }
+
+        public void SetOperationData(BankProduct bankProductSource = null, BankProduct bankProductDestination = null, DateTime? date = null, float value = 0)
+        {
+            
         }
     }
 }

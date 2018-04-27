@@ -10,11 +10,14 @@ namespace Bank
         private Client client;
         private Debet _debet = null; // may be sth or not
 
-        public Debet debet {
-            get {
+        public Debet debet
+        {
+            get
+            {
                 return _debet;
             }
-            set {
+            set
+            {
                 this._debet = value;
             }
         }
@@ -25,9 +28,9 @@ namespace Bank
             this.client = client;
         }
 
-        public void enableDebetAccount(float maxDebet) {
-            Debet debet = new Debet(0, maxDebet);
-            this._debet = debet;
-        }
+        //public void enableDebetAccount(float maxDebet) {
+        //    Debet debet = new Debet(0, maxDebet);
+        //    this._debet = debet;
+        //}
     }
 }

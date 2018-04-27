@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Bank
 {
-    public class BankProduct
+    public class BankProduct: IBankProduct
     {
         private string accountNumber;
         private float _balance;
@@ -31,7 +31,7 @@ namespace Bank
    
         }
 
-        private void calculatePercentage() { // timer bedzie wywolywac te funkcje co jakis czas
+        public void calculatePercentage() { // timer bedzie wywolywac te funkcje co jakis czas
             var income = this.percentageMechanism.calculate(balance);
             balance += income;
         }
