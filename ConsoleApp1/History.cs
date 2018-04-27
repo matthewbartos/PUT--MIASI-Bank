@@ -11,7 +11,7 @@ namespace Bank
         private static readonly Lazy<HistoryManager> lazy =
             new Lazy<HistoryManager>(() => new HistoryManager());
 
-        public static HistoryManager Instance { get { return lazy.Value; } }
+        public static HistoryManager Instance => lazy.Value;
 
         private HistoryManager()
         {
