@@ -21,7 +21,12 @@ namespace Bank
 
         public void SetOperationData(Deposit bankProductSource, BankProduct bankProductDestination, DateTime? date, float value)
         {
-            this.depositAccount = bankProductSource;
+            if (bankProductSource is Deposit)
+            {
+                Deposit deposit = bankProductSource as Deposit;
+                this.depositAccount = deposit;
+            }
+            
             this.value = value;
         }
     }

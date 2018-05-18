@@ -13,9 +13,14 @@ namespace Bank
             depositAccount = null;
         }
 
-        public void SetOperationData(Deposit bankProductSource = null, BankProduct bankProductDestination = null, DateTime? date = null, float value = 0)
+        public void SetOperationData(BankProduct bankProductSource = null, BankProduct bankProductDestination = null, DateTime? date = null, float value = 0)
         {
-            this.depositAccount = bankProductSource;
+            if(bankProductSource is Deposit)
+            {
+                Deposit deposit = bankProductSource as Deposit;
+                this.depositAccount = deposit;
+            }
+            
         }
     }
 }
