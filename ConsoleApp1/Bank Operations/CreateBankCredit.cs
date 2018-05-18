@@ -13,7 +13,7 @@ namespace Bank
         {
             String number = generateUniqueAccountNumber();
             Credit bankCredit = new Credit(number, account);
-            bankProducts.Add(bankCredit);
+           // bankProducts.Add(bankCredit);
         }
 
         public void SetOperationData(BankAccount account)

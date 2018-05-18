@@ -19,7 +19,7 @@ namespace Bank
 
         }
 
-        public void SetOperationData(Deposit bankProductSource, BankProduct bankProductDestination, DateTime? date, float value)
+        public void SetOperationData(BankProduct bankProductSource, BankProduct bankProductDestination, DateTime? date, float value)
         {
             if (bankProductSource is Deposit)
             {

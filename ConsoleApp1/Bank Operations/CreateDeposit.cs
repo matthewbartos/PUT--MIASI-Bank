@@ -11,7 +11,7 @@ namespace Bank
         {
             String number = generateUniqueAccountNumber();
             Deposit deposit = new Deposit(number, account);
-            bankProducts.Add(deposit);
+            //bankProducts.Add(deposit);
         }
 
         public void SetOperationData(BankAccount account)
