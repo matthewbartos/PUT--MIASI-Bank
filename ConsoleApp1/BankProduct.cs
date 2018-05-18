@@ -11,6 +11,8 @@ namespace Bank
         private List<IBankOperation> history;
         private Percentage percentageMechanism;
         private DateTime establishDate;
+        public virtual void accept(Visitor w) { }
+
         public float balance {
             get {
                 return this._balance;
@@ -28,7 +30,6 @@ namespace Bank
             this.accountNumber = number;
             this.balance = 0;
             this.percentageMechanism = new LinearPercentage(2.0f);
-   
         }
 
         public void calculatePercentage() { // timer bedzie wywolywac te funkcje co jakis czas
