@@ -32,7 +32,7 @@ namespace Bank
             return finalString;
         }
 
-        public String generateUniqueAccountNumber() {
+        public static String generateUniqueAccountNumber() {
             var chars = "0123456789";
             var stringChars = new char[9];
             var random = new Random();

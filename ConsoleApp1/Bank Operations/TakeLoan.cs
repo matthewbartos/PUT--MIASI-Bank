@@ -15,9 +15,10 @@ namespace Bank
             creditAccount.bankAccountConnectedWithCredit.balance += value;
         }
 
-        public void SetOperationData(Credit bankProductSource = null, BankProduct bankProductDestination = null, DateTime? date = null, float value = 0)
+        public void SetOperationData(BankProduct bankProductSource = null, BankProduct bankProductDestination = null, DateTime? date = null, float value = 0)
         {
-            this.creditAccount = bankProductSource;
+            Credit credit = bankProductSource as Credit;
+            this.creditAccount = credit;
             this.value = value;
         }
     }

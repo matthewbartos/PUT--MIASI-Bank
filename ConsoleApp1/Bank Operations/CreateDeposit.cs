@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Bank;
 using System.Text;
 
 namespace Bank
@@ -9,7 +10,7 @@ namespace Bank
         BankAccount account;
         public void Create()
         {
-            String number = generateUniqueAccountNumber();
+            String number = Bank.generateUniqueAccountNumber();
             Deposit deposit = new Deposit(number, account);
             //bankProducts.Add(deposit);
         }

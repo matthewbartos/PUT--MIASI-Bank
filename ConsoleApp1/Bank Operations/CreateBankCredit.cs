@@ -11,7 +11,7 @@ namespace Bank
 
         public void Create()
         {
-            String number = generateUniqueAccountNumber();
+            String number = Bank.generateUniqueAccountNumber();
             Credit bankCredit = new Credit(number, account);
            // bankProducts.Add(bankCredit);
         }
