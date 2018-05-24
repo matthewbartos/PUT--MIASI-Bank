@@ -8,12 +8,13 @@ namespace Bank
     {
         // Unique bank id
         public String id;
-        private List<Client> clients;
+        public List<Client> clients;
         public List<BankProduct> bankProducts;
-
 
         public Bank()
         {
+            clients = new List<Client>();
+            bankProducts = new List<BankProduct>();
             id = generateUniqueBankId();
             KIR.Instance.registerBank(this);
         }
@@ -47,9 +48,10 @@ namespace Bank
         }
 
         public void createBankAccount(Client client) {
-            String number = generateUniqueAccountNumber();
-            BankAccount bankAccount = new BankAccount(number, "", client);
-            bankProducts.Add(bankAccount);
+            CreateBankAccount operation = new CreateBankAccount();
+            operation.SetClient(client);
+            operation.SetOperationData(null, this);
+            operation.Create();
         }
 
         public void createBankCredit(BankAccount account) {
@@ -57,10 +59,8 @@ namespace Bank
             //Credit bankCredit = new Credit(number, account);
             //bankProducts.Add(bankCredit);
             IBankCreate operation = new CreateBankCredit();
-            operation.SetOperationData(account);
+            operation.SetOperationData(account, this);
             operation.Create();
-
-            //HistoryManager.Instance.addBankOperation(operation);
         }
 
         public void createDeposit(BankAccount account) {
@@ -72,8 +72,6 @@ namespace Bank
             operation.Create();
         }
 
-
-
         public void transferMoney(BankAccount source, BankAccount destination, float value) {
 
             IBankOperation operation = new TransferOperation();
@@ -84,9 +82,10 @@ namespace Bank
         }
 
         public void paymentOnAccount(BankAccount destination, float value) {
-            //destination.balance += value;
-            IBankOperation operation = new TransferOperation();
-            operation.SetOperationData(null, destination, null, value);
+            
+            PaymentOnAccount operation = new PaymentOnAccount();
+            //operation.SetOperationData(null, destination, null, value);
+            operation.SetOperationValue(destination, new DateTime(), value);
             operation.Execute();
 
             HistoryManager.Instance.addBankOperation(operation);

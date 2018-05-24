@@ -8,11 +8,16 @@ namespace Bank
     {
         private string name;
         private string surname;
+        public BankAccount bankAccount;
 
-        private Client(string name, string surname)
+        public Client(string name, string surname)
         {
             this.name = name;
             this.surname = surname;
+        }
+
+        public void addBankAccount(BankAccount account) {
+            this.bankAccount = account;
         }
     }
 }

@@ -9,12 +9,12 @@ namespace Bank
         private string bankIdSource;
         private string bankIdDestination;
 
-        public void Execute()
+        public override void Execute()
         {
             bankProductDestination.balance += value;
         }
 
-        public void SetOperationData(BankProduct bankProductSource, BankProduct bankProductDestination, DateTime? date, float value)
+        public override void SetOperationData(BankProduct bankProductSource, BankProduct bankProductDestination, DateTime? date, float value)
         {
             this.bankProductSource = bankProductSource;
             this.bankProductDestination = bankProductDestination;

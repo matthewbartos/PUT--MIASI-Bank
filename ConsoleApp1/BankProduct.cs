@@ -7,21 +7,12 @@ namespace Bank
     public class BankProduct: IBankProduct
     {
         private string accountNumber;
-        private float _balance;
+        public float balance;
         private List<IBankOperation> history;
         private Percentage percentageMechanism;
         private DateTime establishDate;
         public virtual void accept(Visitor w) { }
 
-        public float balance {
-            get {
-                return this._balance;
-            }
-
-            set {
-                this._balance = balance;
-            }
-        }
 
         public BankProduct(string number)
         {

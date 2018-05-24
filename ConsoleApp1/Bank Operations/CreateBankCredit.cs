@@ -7,18 +7,19 @@ namespace Bank
 {
     class CreateBankCredit : IBankCreate
     {
+        Bank bank;
         BankAccount account;
-
         public void Create()
         {
             String number = Bank.generateUniqueAccountNumber();
             Credit bankCredit = new Credit(number, account);
-           // bankProducts.Add(bankCredit);
+            bank.bankProducts.Add(bankCredit);
         }
 
-        public void SetOperationData(BankAccount account)
+        public void SetOperationData(BankAccount account, Bank bank)
         {
             this.account = account;
+            this.bank = bank;
         }
     }
 }

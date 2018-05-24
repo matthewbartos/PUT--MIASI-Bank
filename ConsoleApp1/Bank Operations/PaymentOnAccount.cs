@@ -4,19 +4,23 @@ using System.Text;
 
 namespace Bank
 {
-    class PaymentOnAccount : IBankOperation
+    class PaymentOnAccount : BankOperation
     {
-        private BankProduct bankProductDestination;
-        private float value;
-
-        public void Execute()
+        public override void Execute()
         {
-            bankProductDestination.balance += value;
+            //System.Console.WriteLine(this.value);
+            bankProductDestination.balance = bankProductDestination.balance + this.value;
+          
         }
 
-        public void SetOperationData(BankProduct bankProductSource = null, BankProduct bankProductDestination = null, DateTime? date = null, float value = 0)
+        public override void SetOperationData(BankProduct bankProductSource = null, BankProduct bankProductDestination = null, DateTime? date = null, float value = 0)
         {
             this.bankProductDestination = bankProductDestination;
+            this.value = value;
+        }
+
+        public void SetOperationValue(BankProduct destination, DateTime? date = null, float value = 0) {
+            this.bankProductDestination = destination;
             this.value = value;
         }
     }

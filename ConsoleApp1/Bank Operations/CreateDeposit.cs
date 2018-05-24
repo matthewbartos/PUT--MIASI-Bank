@@ -8,16 +8,18 @@ namespace Bank
     class CreateDeposit : IBankCreate
     {
         BankAccount account;
+        Bank bank;
         public void Create()
         {
             String number = Bank.generateUniqueAccountNumber();
             Deposit deposit = new Deposit(number, account);
-            //bankProducts.Add(deposit);
+            bank.bankProducts.Add(deposit);
         }
 
-        public void SetOperationData(BankAccount account)
+        public void SetOperationData(BankAccount account, Bank bank)
         {
             this.account = account;
+            this.bank = bank;
         }
     }
 }
