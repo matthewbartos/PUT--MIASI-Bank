@@ -2,23 +2,23 @@
 
 namespace Bank.Tests
 {
-    [TestFixture]
-    public class BankTest
-    {
-        private readonly Bank _bank;
+    //[TestFixture]
+    //public class BankTest
+    //{
+    //    private readonly Bank _bank;
 
-        public BankTest()
-        {
-            _bank = new Bank();
-        }
+    //    public BankTest()
+    //    {
+    //        _bank = new Bank();
+    //    }
 
-        [Test]
-        public void ReturnFalseGivenValueOf1()
-        {
-           // var result = _bank.generateUniqueAccountNumber();
+    //    [Test]
+    //    public void ReturnFalseGivenValueOf1()
+    //    {
+    //       // var result = _bank.generateUniqueAccountNumber();
            
 
-          //  Assert.AreEqual("0123456789", result);
-        }
-    }
+    //      //  Assert.AreEqual("0123456789", result);
+    //    }
+    //}
 }
