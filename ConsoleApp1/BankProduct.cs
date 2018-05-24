@@ -47,6 +47,10 @@ namespace Bank
         public void addOperation(IBankOperation bankOperation) {
             this.history.Add(bankOperation);
         }
+
+        public string getAccountNumber() {
+            return accountNumber;
+        }
        
     }
 }

@@ -4,11 +4,11 @@ using System.Text;
 
 namespace Bank
 {
-    class TransferOperation : IBankOperation
+    class TransferOperation : BankOperation
     {
-        private BankProduct bankProductSource;
-        private BankProduct bankProductDestination;
-        private float value;
+       // private BankProduct bankProductSource;
+       // private BankProduct bankProductDestination;
+        //private float value;
 
         public void Execute()
         {

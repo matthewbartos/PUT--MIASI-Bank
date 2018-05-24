@@ -32,9 +32,5 @@ namespace Bank
         {
             visitor.visit(this);
         }
-        //public void enableDebetAccount(float maxDebet) {
-        //    Debet debet = new Debet(0, maxDebet);
-        //    this._debet = debet;
-        //}
     }
 }

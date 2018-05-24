@@ -7,7 +7,7 @@ namespace Bank
     public class Bank
     {
         // Unique bank id
-        private String id;
+        public String id;
         private List<Client> clients;
         public List<BankProduct> bankProducts;
 
@@ -133,6 +133,10 @@ namespace Bank
             operation.SetOperationData(creditAccount, null, null, value);
             operation.Execute();
             HistoryManager.Instance.addBankOperation(operation);
+        }
+
+        public void crossbankMoneyTransfer(BankAccount source, string destinationBankId, string destinationNumber, float value) {
+            KIR.Instance.transferMoney(this, source, destinationBankId, destinationNumber, value);
         }
     }
 }

@@ -6,10 +6,10 @@ namespace Bank
 {
     public class BankOperation : IBankOperation
     {
-        private BankProduct bankProductSource;
-        private BankProduct bankProductDestination;
-        private DateTime date;
-        private float _value;
+        protected BankProduct bankProductSource;
+        protected BankProduct bankProductDestination;
+        protected DateTime date;
+        protected float _value;
 
         public float value {
             get {

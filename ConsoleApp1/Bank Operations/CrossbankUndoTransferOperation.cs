@@ -1,30 +1,25 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿using System;
 namespace Bank
 {
-    class CrossbankTransferOperation : BankOperation
+    public class CrossbankUndoTransferOperation: BankOperation
     {
         private string bankIdSource;
-        private string bankIdDestination;
 
         public void Execute()
         {
-            bankProductDestination.balance += value;
+            bankProductSource.balance += value;
         }
 
         public void SetOperationData(BankProduct bankProductSource, BankProduct bankProductDestination, DateTime? date, float value)
         {
             this.bankProductSource = bankProductSource;
-            this.bankProductDestination = bankProductDestination;
+            this.bankProductDestination = null;
             this.value = value;
         }
 
-        public void SetBankData(string bankIdSource, string bankIdDestination)
+        public void SetBankData(string bankIdSource)
         {
             this.bankIdSource = bankIdSource;
-            this.bankIdDestination = bankIdDestination;
         }
     }
 }
