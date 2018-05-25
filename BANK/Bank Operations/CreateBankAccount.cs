@@ -10,16 +10,13 @@ namespace Bank
         {
             String number = Bank.generateUniqueAccountNumber();
             BankAccount bankAccount = new BankAccount(number, "", client);
-            client.addBankAccount(bankAccount);
+            client.addBankProduct(bankAccount);
             bank.bankProducts.Add(bankAccount);
         }
 
-        public void SetOperationData(BankAccount account, Bank bank)
+        public void SetOperationData(BankAccount account, Bank bank, Client client)
         {
             this.bank = bank;
-        }
-
-        public void SetClient(Client client) {
             this.client = client;
         }
     }

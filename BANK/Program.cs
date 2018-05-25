@@ -13,31 +13,39 @@ namespace Bank
             Client client3 = new Client("Paulinson", "Paulinson");
             Client client2 = new Client("Mateusz", "Bartos");
             bankMillenium.createBankAccount(client1);
+            string client1BankNumber = client1.getLastCreatedProductNumber();
+            BankAccount account1 = client1.getBankProduct(client1BankNumber) as BankAccount;
             bankMillenium.createBankAccount(client3);
+            string client3BankNumber = client3.getLastCreatedProductNumber();
+            BankAccount account3 = client3.getBankProduct(client3BankNumber) as BankAccount;
             bankBGZBNPParibas.createBankAccount(client2);
+            string client2BankNumber = client2.getLastCreatedProductNumber();
+            BankAccount account2 = client2.getBankProduct(client2BankNumber) as BankAccount;
 
 
-            bankMillenium.paymentOnAccount(client1.bankAccount, 10000);
-            bankMillenium.paymentOnAccount(client3.bankAccount, 10000);
-            bankBGZBNPParibas.paymentOnAccount(client2.bankAccount, 10000);
-            System.Console.WriteLine("BankAccount1: " + client1.bankAccount.balance);
-            System.Console.WriteLine("BankAccount2: " + client2.bankAccount.balance);
-            System.Console.WriteLine("BankAccount3: " + client3.bankAccount.balance);
 
-            bankMillenium.crossbankMoneyTransfer(client1.bankAccount, bankBGZBNPParibas.id, client2.bankAccount.getAccountNumber(), 3000);
+
+            bankMillenium.paymentOnAccount(account1, 10000);
+            bankMillenium.paymentOnAccount(account3, 10000);
+            bankBGZBNPParibas.paymentOnAccount(account2, 10000);
+            System.Console.WriteLine("BankAccount1: " + account1.balance);
+            System.Console.WriteLine("BankAccount2: " + account2.balance);
+            System.Console.WriteLine("BankAccount3: " + account3.balance);
+
+            bankMillenium.crossbankMoneyTransfer(account1, bankBGZBNPParibas.id, account2.getAccountNumber(), 3000);
             KIR.Instance.performElixirSession();
-            System.Console.WriteLine("BankAccount1: " + client1.bankAccount.balance);
-            System.Console.WriteLine("BankAccount2: " + client2.bankAccount.balance);
-            System.Console.WriteLine("BankAccount3: " + client3.bankAccount.balance);
+            System.Console.WriteLine("BankAccount1: " + account1.balance);
+            System.Console.WriteLine("BankAccount2: " + account2.balance);
+            System.Console.WriteLine("BankAccount3: " + account3.balance);
 
 
-            var accountDecoratorDebet = new BankAccountDecorator(client3.bankAccount);
-            bankMillenium.transferMoney(client3.bankAccount, client1.bankAccount, 13000);
+            var accountDecoratorDebet = new BankAccountDecorator(account3);
+            bankMillenium.transferMoney(account3, account1, 13000);
 
-            System.Console.WriteLine("BankAccount1: " + client1.bankAccount.balance);
-            System.Console.WriteLine("BankAccount2: " + client2.bankAccount.balance);
-            System.Console.WriteLine("BankAccount3: " + client3.bankAccount.balance);
-            System.Console.WriteLine("BankAccount3Debet: " + client3.bankAccount.debet.balance);
+            System.Console.WriteLine("BankAccount1: " + account1.balance);
+            System.Console.WriteLine("BankAccount2: " + account2.balance);
+            System.Console.WriteLine("BankAccount3: " + account3.balance);
+            System.Console.WriteLine("BankAccount3Debet: " + account3.debet.balance);
             System.Console.ReadKey();
         }
     }

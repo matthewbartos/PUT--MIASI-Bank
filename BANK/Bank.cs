@@ -50,26 +50,25 @@ namespace Bank
 
         public void createBankAccount(Client client) {
             CreateBankAccount operation = new CreateBankAccount();
-            operation.SetClient(client);
-            operation.SetOperationData(null, this);
+            operation.SetOperationData(null, this, client);
             operation.Create();
         }
 
-        public void createBankCredit(BankAccount account) {
+        public void createBankCredit(BankAccount account, Client client) {
             //String number = generateUniqueAccountNumber();
             //Credit bankCredit = new Credit(number, account);
             //bankProducts.Add(bankCredit);
             IBankCreate operation = new CreateBankCredit();
-            operation.SetOperationData(account, this);
+            operation.SetOperationData(account, this, client);
             operation.Create();
         }
 
-        public void createDeposit(BankAccount account) {
+        public void createDeposit(BankAccount account, Client client) {
             //String number = generateUniqueAccountNumber();
             //Deposit deposit = new Deposit(number, account);
             //bankProducts.Add(deposit);
             IBankCreate operation = new CreateDeposit();
-            operation.SetOperationData(account);
+            operation.SetOperationData(account, this, client);
             operation.Create();
         }
 

@@ -9,17 +9,20 @@ namespace Bank
     {
         BankAccount account;
         Bank bank;
+        Client client;
         public void Create()
         {
             String number = Bank.generateUniqueAccountNumber();
             Deposit deposit = new Deposit(number, account);
+            client.addBankProduct(deposit);
             bank.bankProducts.Add(deposit);
         }
 
-        public void SetOperationData(BankAccount account, Bank bank)
+        public void SetOperationData(BankAccount account, Bank bank, Client client)
         {
             this.account = account;
             this.bank = bank;
+            this.client = client;
         }
     }
 }
