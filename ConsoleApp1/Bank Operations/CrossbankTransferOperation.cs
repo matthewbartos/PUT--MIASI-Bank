@@ -11,7 +11,15 @@ namespace Bank
 
         public override void Execute()
         {
-            bankProductDestination.balance += value;
+            if (bankProductDestination is BankAccount)
+            {
+                var destination = bankProductDestination as BankAccount;
+                destination.addMoney(value);
+            }
+            else
+            {
+                bankProductDestination.balance += value;
+            }
         }
 
         public override void SetOperationData(BankProduct bankProductSource, BankProduct bankProductDestination, DateTime? date, float value)

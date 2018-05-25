@@ -7,7 +7,7 @@ namespace Bank
     class BankAccountDecorator : IBankProduct
     {
         public BankAccount bankAccount;
-        BankAccountDecorator(BankAccount ba)
+        public BankAccountDecorator(BankAccount ba)
         {
             bankAccount = ba;
             bankAccount.debet = new Debet(0, 10000);

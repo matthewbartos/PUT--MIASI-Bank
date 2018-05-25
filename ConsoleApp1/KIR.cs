@@ -27,12 +27,7 @@ namespace Bank
 
 		public override void transferMoney(Bank sourceBank, BankAccount sourceAccount, string destinationBankId, string destinationBankAccount, float value)
 		{
-            //if(sourceAccount.debet == null && sourceAccount.balance < value) {
-            //    return;
-            //}
-            //else if(sourceAccount.debet != null && sourceAccount.debet.maxDebet )
-
-            sourceAccount.balance -= value;
+            sourceAccount.subtractMoney(value);
 
             BankProduct destinationBankProduct = null;
             Bank destinationBank = allBank.Find((Bank obj) => obj.id == destinationBankId);

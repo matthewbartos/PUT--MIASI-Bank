@@ -14,12 +14,18 @@ namespace Bank
         {
             if(bankProductSource is BankAccount) {
                 var source = bankProductSource as BankAccount;
-                if(source.balance - value < 0) {
-                    
-                }    
+                source.subtractMoney(value); 
+            } else {
+                bankProductSource.balance -= value;
             }
-            bankProductSource.balance -= value;
-            bankProductDestination.balance += value;
+
+            if (bankProductDestination is BankAccount)
+            {
+                var destination = bankProductDestination as BankAccount;
+                destination.addMoney(value);
+            } else {
+                bankProductDestination.balance += value;
+            }
         }
 
         public override void SetOperationData(BankProduct bankProductSource, BankProduct bankProductDestination, DateTime? date, float value)
