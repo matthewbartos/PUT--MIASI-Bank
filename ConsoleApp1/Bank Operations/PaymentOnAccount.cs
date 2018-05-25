@@ -8,9 +8,15 @@ namespace Bank
     {
         public override void Execute()
         {
-            //System.Console.WriteLine(this.value);
-            bankProductDestination.balance = bankProductDestination.balance + this.value;
-          
+            if (bankProductDestination is BankAccount)
+            {
+                var destination = bankProductDestination as BankAccount;
+                destination.addMoney(value);
+            }
+            else
+            {
+                bankProductDestination.balance += value;
+            }
         }
 
         public override void SetOperationData(BankProduct bankProductSource = null, BankProduct bankProductDestination = null, DateTime? date = null, float value = 0)

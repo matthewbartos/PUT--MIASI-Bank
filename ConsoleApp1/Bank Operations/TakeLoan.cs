@@ -12,7 +12,7 @@ namespace Bank
         public void Execute()
         {
             creditAccount.balance -= value;
-            creditAccount.bankAccountConnectedWithCredit.balance += value;
+            creditAccount.bankAccountConnectedWithCredit.addMoney(value);
         }
 
         public void SetOperationData(BankProduct bankProductSource = null, BankProduct bankProductDestination = null, DateTime? date = null, float value = 0)

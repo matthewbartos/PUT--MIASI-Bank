@@ -14,18 +14,14 @@ namespace Bank
 
         public void Execute()
         {
-            if (this.bankProductSource is BankAccount)
+            if (bankProductSource is BankAccount)
             {
-                BankAccount bankProductSource = (BankAccount)this.bankProductSource;
-                if (bankProductSource.debet != null && value > bankProductSource.balance && value + bankProductSource.debet.balance <= bankProductSource.debet.maxDebet)
-                {
-                    bankProductSource.balance = 0;
-                    bankProductSource.debet.balance += value - bankProductSource.balance;
-                }
-                else if (value <= bankProductSource.balance)
-                {
-                    bankProductSource.balance -= value;
-                }
+                var source = bankProductSource as BankAccount;
+                source.subtractMoney(value);
+            }
+            else
+            {
+                bankProductSource.balance -= value;
             }
         }
 

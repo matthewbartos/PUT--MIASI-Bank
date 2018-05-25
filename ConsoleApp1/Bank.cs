@@ -87,7 +87,6 @@ namespace Bank
         public void paymentOnAccount(BankAccount destination, float value) {
             
             PaymentOnAccount operation = new PaymentOnAccount();
-            //operation.SetOperationData(null, destination, null, value);
             operation.SetOperationValue(destination, new DateTime(), value);
             operation.Execute();
 
