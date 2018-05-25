@@ -4,14 +4,14 @@ using System.Text;
 
 namespace Bank
 {
-    public class BankProduct: IBankProduct
+    public abstract class BankProduct: IBankProduct
     {
         private string accountNumber;
         public float balance;
         private List<IBankOperation> history;
         private Percentage percentageMechanism;
         private DateTime establishDate;
-        public virtual void accept(Visitor w) { }
+        public virtual void accept(Visitor visitor) { }
 
 
         public BankProduct(string number)
@@ -41,7 +41,6 @@ namespace Bank
 
         public string getAccountNumber() {
             return accountNumber;
-        }
-       
+        }  
     }
 }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 namespace Bank
 {
-
     public abstract class Mediator
     {
         public abstract void transferMoney(Bank sourceBank, BankAccount sourceAccount, string destinationBankId, string destinationBankAccount, float value);
@@ -28,6 +27,11 @@ namespace Bank
 
 		public override void transferMoney(Bank sourceBank, BankAccount sourceAccount, string destinationBankId, string destinationBankAccount, float value)
 		{
+            //if(sourceAccount.debet == null && sourceAccount.balance < value) {
+            //    return;
+            //}
+            //else if(sourceAccount.debet != null && sourceAccount.debet.maxDebet )
+
             sourceAccount.balance -= value;
 
             BankProduct destinationBankProduct = null;
@@ -41,6 +45,7 @@ namespace Bank
                 undoTransferOperation.SetBankData(sourceBank.id);
                 undoTransferOperation.SetOperationData(sourceAccount, destinationBankProduct, new DateTime(), value);
                 operationsInELIXIRSession.Add(undoTransferOperation);
+                sourceBank.historyManager.addBankOperation(undoTransferOperation);
             }
 
 
@@ -48,6 +53,8 @@ namespace Bank
             crossbankTransferOperation.SetBankData(sourceBank.id, destinationBank.id);
             crossbankTransferOperation.SetOperationData(sourceAccount, destinationBankProduct, new DateTime(), value);
             operationsInELIXIRSession.Add(crossbankTransferOperation);
+            sourceBank.historyManager.addBankOperation(crossbankTransferOperation);
+            destinationBank.historyManager.addBankOperation(crossbankTransferOperation);
 		}
 
         public void performElixirSession() {

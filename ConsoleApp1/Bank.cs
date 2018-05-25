@@ -10,9 +10,10 @@ namespace Bank
         public String id;
         public List<Client> clients;
         public List<BankProduct> bankProducts;
-
+        public HistoryManager historyManager;
         public Bank()
         {
+            historyManager = new HistoryManager();
             clients = new List<Client>();
             bankProducts = new List<BankProduct>();
             id = generateUniqueBankId();
@@ -77,8 +78,10 @@ namespace Bank
             IBankOperation operation = new TransferOperation();
             operation.SetOperationData(source, destination, null, value);
             operation.Execute();
-        
-            HistoryManager.Instance.addBankOperation(operation);
+
+            source.addOperation(operation);
+            destination.addOperation(operation);
+            historyManager.addBankOperation(operation);
         }
 
         public void paymentOnAccount(BankAccount destination, float value) {
@@ -88,14 +91,16 @@ namespace Bank
             operation.SetOperationValue(destination, new DateTime(), value);
             operation.Execute();
 
-            HistoryManager.Instance.addBankOperation(operation);
+            destination.addOperation(operation);
+            historyManager.addBankOperation(operation);
         }
 
         public void withdrawFromAccount(BankAccount source, float value) {
             IBankOperation operation = new WithdrawOperation();
             operation.SetOperationData(source, null, null, value);
             operation.Execute();
-            HistoryManager.Instance.addBankOperation(operation);
+            source.addOperation(operation);
+            historyManager.addBankOperation(operation);
 
             //if(source.debet != null && value > source.balance && value + source.debet.balance <= source.debet.maxDebet ) {
             //    source.balance = 0;
@@ -112,7 +117,8 @@ namespace Bank
             IBankOperation operation = new DepositOperation();
             operation.SetOperationData(depositAccount, null, null, value);
             operation.Execute();
-            HistoryManager.Instance.addBankOperation(operation);
+            depositAccount.addOperation(operation);
+            historyManager.addBankOperation(operation);
         }
 
         public void closeDeposit(Deposit depositAccount) {
@@ -121,7 +127,8 @@ namespace Bank
             IBankOperation operation = new CloseDeposit();
             operation.SetOperationData(depositAccount, null, null, 0);
             operation.Execute();
-            HistoryManager.Instance.addBankOperation(operation);
+            depositAccount.addOperation(operation);
+            historyManager.addBankOperation(operation);
 
         }
 
@@ -131,7 +138,8 @@ namespace Bank
             IBankOperation operation = new TakeLoan();
             operation.SetOperationData(creditAccount, null, null, value);
             operation.Execute();
-            HistoryManager.Instance.addBankOperation(operation);
+            creditAccount.addOperation(operation);
+            historyManager.addBankOperation(operation);
         }
 
         public void crossbankMoneyTransfer(BankAccount source, string destinationBankId, string destinationNumber, float value) {

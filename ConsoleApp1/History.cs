@@ -4,22 +4,24 @@ using System.Text;
 
 namespace Bank
 {
-    public sealed class HistoryManager
+    public class HistoryManager
     {
         private List<IBankOperation> allBankOperations;
 
-        private static readonly Lazy<HistoryManager> lazy =
-            new Lazy<HistoryManager>(() => new HistoryManager());
+        //private static readonly Lazy<HistoryManager> lazy =
+        //    new Lazy<HistoryManager>(() => new HistoryManager());
 
-        public static HistoryManager Instance => lazy.Value;
+        //public static HistoryManager Instance => lazy.Value;
 
-        private HistoryManager()
+        public HistoryManager()
         {
             this.allBankOperations = new List<IBankOperation>();
         }
 
         public void addBankOperation(IBankOperation bankOperation) {
-            this.allBankOperations.Add(bankOperation);
+            if(!allBankOperations.Contains(bankOperation)) {
+                this.allBankOperations.Add(bankOperation);
+            }
         }
     }
 }
