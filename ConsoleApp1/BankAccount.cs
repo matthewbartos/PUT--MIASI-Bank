@@ -32,5 +32,50 @@ namespace Bank
         {
             visitor.visit(this);
         }
+
+        public void subtractMoney(float value) {
+            if(debet != null) {
+                if(balance - value < 0) {
+                    var rest = value - balance;
+                    if (debet.balance + rest <= debet.maxDebet)
+                    {
+                        debet.balance += rest;
+                        balance = 0;
+                    }
+                } else {
+                    balance -= value;
+                }
+            } else {
+                if (balance - value > 0)
+                {
+                    balance -= value;
+                }
+            }
+        }
+
+        public void addMoney(float value)
+        {
+            if (debet != null)
+            {
+                if (debet.balance > 0)
+                {
+                    var rest = debet.balance - value;
+                    if(rest >= 0) {
+                        debet.balance -= value;
+                    } else {
+                        balance += rest;
+                        debet.balance = 0;
+                    }
+                }
+                else
+                {
+                    balance += value;
+                }
+            }
+            else
+            {
+                balance += value;
+            }
+        }
     }
 }

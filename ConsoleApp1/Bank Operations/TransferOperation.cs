@@ -12,6 +12,12 @@ namespace Bank
 
         public override void Execute()
         {
+            if(bankProductSource is BankAccount) {
+                var source = bankProductSource as BankAccount;
+                if(source.balance - value < 0) {
+                    
+                }    
+            }
             bankProductSource.balance -= value;
             bankProductDestination.balance += value;
         }
