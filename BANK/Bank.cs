@@ -37,7 +37,8 @@ namespace Bank
         public static String generateUniqueAccountNumber() {
             var chars = "0123456789";
             var stringChars = new char[9];
-            var random = new Random();
+            System.Threading.Thread.Sleep(1);
+            var random = new Random(System.DateTime.Now.Millisecond);
 
             for (int i = 0; i<stringChars.Length; i++)
             {

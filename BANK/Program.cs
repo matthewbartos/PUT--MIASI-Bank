@@ -14,12 +14,16 @@ namespace Bank
             Client client2 = new Client("Mateusz", "Bartos");
             bankMillenium.createBankAccount(client1);
             string client1BankNumber = client1.getLastCreatedProductNumber();
+            Console.WriteLine(client1BankNumber);
             BankAccount account1 = client1.getBankProduct(client1BankNumber) as BankAccount;
             bankMillenium.createBankAccount(client3);
             string client3BankNumber = client3.getLastCreatedProductNumber();
+            Console.WriteLine(client3BankNumber);
             BankAccount account3 = client3.getBankProduct(client3BankNumber) as BankAccount;
+
             bankBGZBNPParibas.createBankAccount(client2);
             string client2BankNumber = client2.getLastCreatedProductNumber();
+            Console.WriteLine(client2BankNumber);
             BankAccount account2 = client2.getBankProduct(client2BankNumber) as BankAccount;
 
 
