@@ -54,14 +54,15 @@ namespace Bank
             operation.Create();
         }
 
-        //public void createBankCredit(BankAccount account, Client client) {
-        //    //String number = generateUniqueAccountNumber();
-        //    //Credit bankCredit = new Credit(number, account);
-        //    //bankProducts.Add(bankCredit);
-        //    IBankCreate operation = new CreateBankCredit();
-        //    operation.SetOperationData(account, this, client);
-        //    operation.Create();
-        //}
+        public void createBankCredit(BankAccount account, Client client) {
+            //String number = generateUniqueAccountNumber();
+            //Credit bankCredit = new Credit(number, account);
+            //bankProducts.Add(bankCredit);
+            CreateBankCredit operation = new CreateBankCredit();
+            operation.SetOperationData(account, this, client);
+            operation.SetCreditValue(10000);
+            operation.Create();
+        }
 
         public void createDeposit(BankAccount account, Client client) {
             //String number = generateUniqueAccountNumber();
@@ -72,12 +73,7 @@ namespace Bank
             operation.Create();
         }
 
-        public void createCredit(BankAccount account, Client client, float balance)
-        {
-            ICredit operation = new CreditOperation();
-            operation.SetOperationData(account, this, client);
-            operation.Create(balance);
-        }
+       
 
         public void transferMoney(BankAccount source, BankAccount destination, float value) {
 

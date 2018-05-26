@@ -9,12 +9,15 @@ namespace Bank
 
         public BankAccount _bankAccountConnectedWithCredit;
         //private float creditRate;
-        //public float creditValue;
+        public float creditValue;
         
 
-        public Credit(string number, BankAccount bankAccount) : base(number)
+        public Credit(string number, BankAccount bankAccount, float creditValue) : base(number)
         {
             this._bankAccountConnectedWithCredit = bankAccount;
+            this.creditValue = creditValue;
+            this.balance += creditValue; //to traktujemy jako kase na miniusie
+            this.bankAccountConnectedWithCredit.addMoney(creditValue);
         }
 
         public BankAccount bankAccountConnectedWithCredit
