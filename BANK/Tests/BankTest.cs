@@ -38,5 +38,22 @@ namespace Bank.Tests
 
             Assert.IsNotNull(client.getLastCreatedProductNumber());
         }
+
+        [Test]
+        public void ClientPaymentOnAccount()
+        {
+            Client client = new Client("Name", "Surname");
+            _bank.createBankAccount(client);
+            string bankNumber = client.getLastCreatedProductNumber();
+            BankAccount account = client.getBankProduct(bankNumber) as BankAccount;
+            _bank.paymentOnAccount(account, 10000);
+       
+            Assert.AreEqual(account.balance, 10000);
+        }
+
+        public void Cross()
+        {
+
+        }
     }
 }
