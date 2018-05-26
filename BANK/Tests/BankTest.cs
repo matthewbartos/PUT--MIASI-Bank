@@ -34,8 +34,9 @@ namespace Bank.Tests
         public void ClientCanCreateBankAccount()
         {
             var client = new Client("Name", "Surname");
-            Assert.IsNull(client.getLastCreatedProductNumber());
             _bank.createBankAccount(client);
+
+            Assert.IsNotNull(client.getLastCreatedProductNumber());
         }
     }
 }
