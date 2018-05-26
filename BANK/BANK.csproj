@@ -51,7 +51,6 @@
   <ItemGroup>
     <Compile Include="BalanceRaport.cs" />
     <Compile Include="Bank Operations\BankOperation.cs" />
-    <Compile Include="Bank Operations\BreakInterestOperation.cs" />
     <Compile Include="Bank Operations\CalculatePercentageOperation.cs" />
     <Compile Include="Bank Operations\ChangePercentageOperation.cs" />
     <Compile Include="Bank Operations\CloseDeposit.cs" />
