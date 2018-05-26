@@ -54,14 +54,14 @@ namespace Bank
             operation.Create();
         }
 
-        public void createBankCredit(BankAccount account, Client client) {
-            //String number = generateUniqueAccountNumber();
-            //Credit bankCredit = new Credit(number, account);
-            //bankProducts.Add(bankCredit);
-            IBankCreate operation = new CreateBankCredit();
-            operation.SetOperationData(account, this, client);
-            operation.Create();
-        }
+        //public void createBankCredit(BankAccount account, Client client) {
+        //    //String number = generateUniqueAccountNumber();
+        //    //Credit bankCredit = new Credit(number, account);
+        //    //bankProducts.Add(bankCredit);
+        //    IBankCreate operation = new CreateBankCredit();
+        //    operation.SetOperationData(account, this, client);
+        //    operation.Create();
+        //}
 
         public void createDeposit(BankAccount account, Client client) {
             //String number = generateUniqueAccountNumber();
