@@ -72,6 +72,13 @@ namespace Bank
             operation.Create();
         }
 
+        public void createCredit(BankAccount account, Client client, float balance)
+        {
+            ICredit operation = new CreditOperation();
+            operation.SetOperationData(account, this, client);
+            operation.Create(balance);
+        }
+
         public void transferMoney(BankAccount source, BankAccount destination, float value) {
 
             IBankOperation operation = new TransferOperation();
@@ -80,6 +87,15 @@ namespace Bank
 
             source.addOperation(operation);
             destination.addOperation(operation);
+            historyManager.addBankOperation(operation);
+        }
+        public void paymentOnCredit(BankAccount account, float rate)
+        {
+            PaymentOnAccount operation = new PaymentOnAccount();
+            operation.SetOperationValue(account, new DateTime(), rate);
+            operation.Execute();
+
+            account.addOperation(operation);
             historyManager.addBankOperation(operation);
         }
 
