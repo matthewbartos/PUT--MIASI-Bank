@@ -62,12 +62,14 @@ namespace Bank
             operation.Create();
         }
 
-        public void createDeposit(BankAccount account, Client client) {
+        public void createDeposit(BankAccount account, Client client, float depositValue) {
             //String number = generateUniqueAccountNumber();
             //Deposit deposit = new Deposit(number, account);
             //bankProducts.Add(deposit);
-            IBankCreate operation = new CreateDeposit();
+    
+            CreateDeposit operation = new CreateDeposit();
             operation.SetOperationData(account, this, client);
+            operation.SetDepositValue(depositValue);
             operation.Create();
         }
 
@@ -91,6 +93,11 @@ namespace Bank
 
             account.addOperation(operation);
             historyManager.addBankOperation(operation);
+        }
+
+        public void closeDeposit(BankAccount account)
+        {
+           
         }
 
         public void paymentOnAccount(BankAccount destination, float value) {

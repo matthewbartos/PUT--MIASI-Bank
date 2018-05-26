@@ -22,8 +22,9 @@ namespace Bank
         }
 
         public Deposit(string number, BankAccount bankAccount) : base(number) {
-            this.income = 0;
+            //this.income = 0;
             this._bankAccountConnectedWithDeposit = bankAccount;
+            this.setPercentageMechanism(new LinearPercentage(2));
         }
 
         public BankAccount bankAccountConnectedWithDeposit {
@@ -39,10 +40,14 @@ namespace Bank
             if (DateTime.Now.CompareTo(expirationDate) < 0) { // zamykamy przed czasem
                 this.bankAccountConnectedWithDeposit.balance += initialPayment;
             } else {
+                income = Math.Abs(this.calculatePercentage());
                 this.bankAccountConnectedWithDeposit.balance += initialPayment + income;
             }
             this.initialPayment = 0;
             this.income = 0;
-        } 
+        }
+
+      
+        
     }
 }

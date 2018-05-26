@@ -57,7 +57,16 @@ namespace Bank
             credit.payRate();
             System.Console.WriteLine("BankAccount1: " + account1.balance);
             System.Console.WriteLine("BankAccount2: " + account2.balance);
-            System.Console.WriteLine("BankAccount3: " + account3.balance);
+            System.Console.WriteLine("BankAcccount3: " + account3.balance);
+            
+
+            bankMillenium.createDeposit(account1, client1, 2000);
+            String depositnumber = client1.getLastCreatedProductNumber();
+            Deposit deposit = client1.getBankProduct(depositnumber) as Deposit;
+            System.Console.WriteLine("BankAccount1: " + account1.balance);
+            deposit.closeDeposit();
+            System.Console.WriteLine("BankAccount1: " + account1.balance);
+
             System.Console.ReadKey();
         }
     }

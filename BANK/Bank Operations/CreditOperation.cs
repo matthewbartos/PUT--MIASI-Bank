@@ -20,13 +20,11 @@ namespace Bank
             bank.bankProducts.Add(credit);
         }
 
-        public void SetOperationData(BankProduct bankProductSource = null, BankProduct bankProductDestination = null, DateTime? date = null, float value = 0);
+        public void SetOperationData(BankProduct bankProductSource = null, BankProduct bankProductDestination = null, DateTime? date = null, float value = 0)
         {
             this.account = account;
             this.bank = bank;
             this.client = client;
         }
-
-
     }
 }

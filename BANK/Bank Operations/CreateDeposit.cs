@@ -10,6 +10,7 @@ namespace Bank
         BankAccount account;
         Bank bank;
         Client client;
+        float balance;
         public void Create()
         {
             String number = Bank.generateUniqueAccountNumber();
@@ -23,6 +24,11 @@ namespace Bank
             this.account = account;
             this.bank = bank;
             this.client = client;
+        }
+
+        public void SetDepositValue(float value)
+        {
+            this.balance = value;
         }
     }
 }
