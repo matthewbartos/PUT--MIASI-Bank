@@ -77,7 +77,7 @@
     <Compile Include="BankAccount.cs" />
     <Compile Include="BankProduct.cs" />
     <Compile Include="BankProductDecorator.cs" />
-    <Compile Include="Tests\Class1.cs" />
+    <Compile Include="Tests\BankTest.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="Credit.cs" />
     <Compile Include="CubicPercentage.cs" />
