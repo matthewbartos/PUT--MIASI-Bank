@@ -21,10 +21,11 @@ namespace Bank
             }
         }
 
-        public Deposit(string number, BankAccount bankAccount) : base(number) {
+        public Deposit(string number, BankAccount bankAccount, float initial) : base(number) {
             //this.income = 0;
             this._bankAccountConnectedWithDeposit = bankAccount;
             this.setPercentageMechanism(new LinearPercentage(2));
+            this.initialPayment = initial;
         }
 
         public BankAccount bankAccountConnectedWithDeposit {
@@ -47,7 +48,12 @@ namespace Bank
             this.income = 0;
         }
 
-      
-        
+       public void setInitialPayment(float init)
+        {
+            this.initialPayment = init;
+        }
+
+
+
     }
 }
