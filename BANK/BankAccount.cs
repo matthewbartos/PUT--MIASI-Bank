@@ -53,6 +53,34 @@ namespace Bank
             }
         }
 
+        public bool checkIfSubtractionPossible(float value) {
+            if (debet != null)
+            {
+                if (balance - value < 0)
+                {
+                    var rest = value - balance;
+                    if (debet.balance + rest <= debet.maxDebet)
+                    {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                } else
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                if (balance - value > 0)
+                {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
+
         public void addMoney(float value)
         {
             if (debet != null)

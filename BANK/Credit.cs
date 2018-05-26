@@ -8,7 +8,6 @@ namespace Bank
     {
 
         public BankAccount _bankAccountConnectedWithCredit;
-        //private float creditRate;
         public float creditValue;
         
 
@@ -18,6 +17,7 @@ namespace Bank
             this.creditValue = creditValue;
             this.balance += creditValue; //to traktujemy jako kase na miniusie
             this.bankAccountConnectedWithCredit.addMoney(creditValue);
+            this.setPercentageMechanism(new LinearPercentage(5));
         }
 
         public BankAccount bankAccountConnectedWithCredit
@@ -33,12 +33,14 @@ namespace Bank
         }
 
         
-        public void payRate(BankAccount bA, float rate)
+        public void payRate()
         {
-            bA.balance = bA.balance + rate;
-            if (bA.balance == rate)
-            {
-                closeCredit();
+            var additionalCost = this.calculatePercentage();
+            var totalCost = additionalCost + creditValue;
+
+            if(bankAccountConnectedWithCredit.checkIfSubtractionPossible(totalCost)) {
+                bankAccountConnectedWithCredit.subtractMoney(totalCost);
+                this.closeCredit();
             }
            
             //spłacany(dla uproszczenia – w jednej racie równej wysokości kretytu + wysokości odsetek).

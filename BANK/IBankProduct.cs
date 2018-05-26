@@ -6,7 +6,7 @@ namespace Bank
 {
     public interface IBankProduct
     {
-        void calculatePercentage();
+        float calculatePercentage();
         void setPercentageMechanism(Percentage mechanism);
         void addOperation(IBankOperation bankOperation);
     }

@@ -18,9 +18,9 @@ namespace Bank
             bankAccount.addOperation(bankOperation);
         }
 
-        public void calculatePercentage()
+        public float calculatePercentage()
         {
-            bankAccount.calculatePercentage();
+            return bankAccount.calculatePercentage();
         }
 
         public void setPercentageMechanism(Percentage mechanism)
