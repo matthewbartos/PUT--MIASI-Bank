@@ -51,9 +51,28 @@ namespace Bank.Tests
             Assert.AreEqual(account.balance, 10000);
         }
 
-        public void Cross()
+        public void CrossbankMoneyTransfer()
         {
+            Bank bank1 = new Bank();
+            Bank bank2 = new Bank();
 
+            Client client1 = new Client("Name", "Surname");
+            Client client2 = new Client("Name", "Surname");
+
+            bank1.createBankAccount(client1);
+            bank2.createBankAccount(client2);
+
+            BankAccount account1 = client1.getBankProduct(Bank.generateUniqueAccountNumber()) as BankAccount;
+            BankAccount account2 = client2.getBankProduct(Bank.generateUniqueAccountNumber()) as BankAccount;
+
+            account1.balance = 1000;
+            account2.balance = 0;
+
+            bank1.crossbankMoneyTransfer(account1, bank2.id, account2.getAccountNumber(), 1000);
+            KIR.Instance.performElixirSession();
+
+            Assert.AreEqual(account1.balance, 0);
+            Assert.AreEqual(account2.balance, 1000);
         }
     }
 }
