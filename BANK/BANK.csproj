@@ -51,8 +51,6 @@
   <ItemGroup>
     <Compile Include="BalanceRaport.cs" />
     <Compile Include="Bank Operations\BankOperation.cs" />
-    <Compile Include="Bank Operations\CalculatePercentageOperation.cs" />
-    <Compile Include="Bank Operations\ChangePercentageOperation.cs" />
     <Compile Include="Bank Operations\CloseDeposit.cs" />
     <Compile Include="Bank Operations\CreateBankAccount.cs" />
     <Compile Include="Bank Operations\CreateBankCredit.cs" />
@@ -66,7 +64,6 @@
     <Compile Include="Bank Operations\InstalmentOperation.cs" />
     <Compile Include="Bank Operations\PaymentOnAccount.cs" />
     <Compile Include="Bank Operations\RaportOperation.cs" />
-    <Compile Include="Bank Operations\SetInterestOperation.cs" />
     <Compile Include="Bank Operations\TakeLoan.cs" />
     <Compile Include="Bank Operations\TransferOperation.cs" />
     <Compile Include="Bank Operations\WithdrawOperation.cs" />
