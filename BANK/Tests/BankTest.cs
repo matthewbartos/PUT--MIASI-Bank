@@ -112,5 +112,37 @@ namespace Bank.Tests
             credit.payRate();
             Assert.AreEqual(account1.balance, 0);
         }
+
+        public void makeDeposit()
+        {
+            Bank bank1 = new Bank();
+            Client client1 = new Client("Name", "Surname");
+            bank1.createBankAccount(client1);
+            BankAccount account1 = client1.getBankProduct(Bank.generateUniqueAccountNumber()) as BankAccount;
+            account1.balance = 1000;
+           
+            bank1.createDeposit(account1, client1, 1000);
+            String depositnumber = client1.getLastCreatedProductNumber();
+            Deposit deposit = client1.getBankProduct(depositnumber) as Deposit;
+
+            Assert.AreEqual(account1.balance,0);
+        }
+
+        public void closeDeposit()
+        {
+            Bank bank1 = new Bank();
+            Client client1 = new Client("Name", "Surname");
+            bank1.createBankAccount(client1);
+            BankAccount account1 = client1.getBankProduct(Bank.generateUniqueAccountNumber()) as BankAccount;
+            account1.balance = 1000;
+
+            bank1.createDeposit(account1, client1, 1000);
+            String depositnumber = client1.getLastCreatedProductNumber();
+            Deposit deposit = client1.getBankProduct(depositnumber) as Deposit;
+            
+            deposit.closeDeposit();
+          
+            Assert.AreNotEqual(1000, account1.balance);
+        }
     }
 }
