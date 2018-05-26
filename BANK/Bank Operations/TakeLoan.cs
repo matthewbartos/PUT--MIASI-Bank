@@ -18,6 +18,7 @@ namespace Bank
         public void SetOperationData(BankProduct bankProductSource = null, BankProduct bankProductDestination = null, DateTime? date = null, float value = 0)
         {
             Credit credit = bankProductSource as Credit;
+            credit.creditValue = value;
             this.creditAccount = credit;
             this.value = value;
         }

@@ -11,12 +11,12 @@ namespace Bank
         public float creditValue;
         
 
-        public Credit(string number, BankAccount bankAccount, float creditValue) : base(number)
+        public Credit(string number, BankAccount bankAccount) : base(number)
         {
             this._bankAccountConnectedWithCredit = bankAccount;
-            this.creditValue = creditValue;
-            this.balance += creditValue; //to traktujemy jako kase na miniusie
-            this.bankAccountConnectedWithCredit.addMoney(creditValue);
+            //this.creditValue = creditValue;
+            //this.balance -= creditValue; 
+            //this.bankAccountConnectedWithCredit.addMoney(creditValue);
             this.setPercentageMechanism(new LinearPercentage(5));
         }
 
@@ -35,7 +35,7 @@ namespace Bank
         
         public void payRate()
         {
-            var additionalCost = this.calculatePercentage();
+            var additionalCost = Math.Abs(this.calculatePercentage());
             var totalCost = additionalCost + creditValue;
 
             if(bankAccountConnectedWithCredit.checkIfSubtractionPossible(totalCost)) {

@@ -55,9 +55,6 @@ namespace Bank
         }
 
         public void createBankCredit(BankAccount account, Client client, float creditValue) {
-            //String number = generateUniqueAccountNumber();
-            //Credit bankCredit = new Credit(number, account);
-            //bankProducts.Add(bankCredit);
             CreateBankCredit operation = new CreateBankCredit();
             operation.SetOperationData(account, this, client);
             operation.SetCreditValue(creditValue);
@@ -141,16 +138,6 @@ namespace Bank
             depositAccount.addOperation(operation);
             historyManager.addBankOperation(operation);
 
-        }
-
-        public void takeLoan(Credit creditAccount, float value) {
-            //creditAccount.balance -= value;
-            //creditAccount.bankAccountConnectedWithCredit.balance += value;
-            IBankOperation operation = new TakeLoan();
-            operation.SetOperationData(creditAccount, null, null, value);
-            operation.Execute();
-            creditAccount.addOperation(operation);
-            historyManager.addBankOperation(operation);
         }
 
         public void crossbankMoneyTransfer(BankAccount source, string destinationBankId, string destinationNumber, float value) {
