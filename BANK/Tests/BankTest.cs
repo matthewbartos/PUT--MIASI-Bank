@@ -85,5 +85,32 @@ namespace Bank.Tests
 
             Assert.IsNotNull(client1.getLastCreatedProductNumber());
         }
+
+        public void TakeCredit()
+        {
+            Bank bank1 = new Bank();
+            Client client1 = new Client("Name", "Surname");
+            bank1.createBankAccount(client1);
+            BankAccount account1 = client1.getBankProduct(Bank.generateUniqueAccountNumber()) as BankAccount;
+            account1.balance = 0;
+            bank1.createBankCredit(account1, client1, 5000);
+            String creditNumber = client1.getLastCreatedProductNumber();
+            Credit credit = client1.getBankProduct(creditNumber) as Credit;
+            Assert.AreEqual(account1.balance, 5000);
+        }
+
+        public void PayRateOnCredit()
+        {
+            Bank bank1 = new Bank();
+            Client client1 = new Client("Name", "Surname");
+            bank1.createBankAccount(client1);
+            BankAccount account1 = client1.getBankProduct(Bank.generateUniqueAccountNumber()) as BankAccount;
+            account1.balance = 0;
+            bank1.createBankCredit(account1, client1, 5000);
+            String creditNumber = client1.getLastCreatedProductNumber();
+            Credit credit = client1.getBankProduct(creditNumber) as Credit;
+            credit.payRate();
+            Assert.AreEqual(account1.balance, 0);
+        }
     }
 }
