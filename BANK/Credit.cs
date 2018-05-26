@@ -8,7 +8,10 @@ namespace Bank
     {
 
         public BankAccount _bankAccountConnectedWithCredit;
+        //private float creditRate;
+        //public float creditValue;
         
+
         public Credit(string number, BankAccount bankAccount) : base(number)
         {
             this._bankAccountConnectedWithCredit = bankAccount;
@@ -27,11 +30,21 @@ namespace Bank
         }
 
         
-        public void payRate()
+        public void payRate(BankAccount bA, float rate)
         {
-            //_bankAccountConnectedWithCredit
+            bA.balance = bA.balance + rate;
+            if (bA.balance == rate)
+            {
+                closeCredit();
+            }
+           
             //spłacany(dla uproszczenia – w jednej racie równej wysokości kretytu + wysokości odsetek).
-            //    bankAcc
+           
+        }
+
+        public void closeCredit()
+        {
+            this._bankAccountConnectedWithCredit.balance = 0;
         }
     }
 }

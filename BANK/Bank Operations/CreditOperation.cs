@@ -5,16 +5,18 @@ using System.Text;
 namespace Bank
 {
 
-    class CreditOperation : IBankCreate
+    class CreditOperation : ICredit
     {
         BankAccount account;
         Bank bank;
         Client client;
 
-        public void Create()
+
+        public void Create(float balance)
         {
             String number = Bank.generateUniqueAccountNumber();
             Credit credit = new Credit(number, account);
+            credit.balance = balance;
             client.addBankProduct(credit);
             bank.bankProducts.Add(credit);
         }
