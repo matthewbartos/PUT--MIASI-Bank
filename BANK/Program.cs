@@ -70,6 +70,12 @@ namespace Bank
             deposit.closeDeposit();
             System.Console.WriteLine("BankAccount1: " + account1.balance);
 
+            BalanceRaport raport = new BalanceRaport();
+            raport.visit(deposit);
+            raport.visit(account1);
+
+
+
             System.Console.ReadKey();
         }
     }
