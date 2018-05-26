@@ -131,9 +131,10 @@ namespace Bank
             historyManager.addBankOperation(operation);
         }
 
-        public void closeDeposit(Deposit depositAccount) {
+        public void closeDeposit(Deposit depositAccount, BankAccount account) {
             //depositAccount.closeDeposit();
             //depositAccount = null;
+            account.addMoney(depositAccount.balance);
             IBankOperation operation = new CloseDeposit();
             operation.SetOperationData(depositAccount, null, null, 0);
             operation.Execute();
