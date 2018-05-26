@@ -35,17 +35,24 @@ namespace Bank
         }
 
         public static String generateUniqueAccountNumber() {
-            var chars = "0123456789";
-            var stringChars = new char[9];
+            //var chars = "0123456789";
+            //var stringChars = new char[9];
+            //var random = new Random();
+
+            //for (int i = 0; i<stringChars.Length; i++)
+            //{
+            //    stringChars[i] = chars[random.Next(chars.Length)];
+            //}
+
+            //var finalString = new String(stringChars);
+            //return finalString;
+
             var random = new Random();
-
-            for (int i = 0; i<stringChars.Length; i++)
-            {
-                stringChars[i] = chars[random.Next(chars.Length)];
-            }
-
-            var finalString = new String(stringChars);
-            return finalString;
+            string s = string.Empty;
+            for (int i = 0; i < 10; i++)
+                s = String.Concat(s, random.Next(9).ToString());
+            return s;
+            
         }
 
         public void createBankAccount(Client client) {

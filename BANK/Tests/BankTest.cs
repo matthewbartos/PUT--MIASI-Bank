@@ -74,5 +74,16 @@ namespace Bank.Tests
             Assert.AreEqual(account1.balance, 0);
             Assert.AreEqual(account2.balance, 1000);
         }
+
+        public void CreateDeposit()
+        {
+            Bank bank1 = new Bank();
+            Client client1 = new Client("Name", "Surname");
+            bank1.createBankAccount(client1);
+            BankAccount account1 = client1.getBankProduct(Bank.generateUniqueAccountNumber()) as BankAccount;
+            bank1.createDeposit(account1,client1);
+
+            Assert.IsNotNull(client1.getLastCreatedProductNumber());
+        }
     }
 }

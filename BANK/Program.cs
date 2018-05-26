@@ -22,15 +22,16 @@ namespace Bank
             string client2BankNumber = client2.getLastCreatedProductNumber();
             BankAccount account2 = client2.getBankProduct(client2BankNumber) as BankAccount;
 
-
-
-
             bankMillenium.paymentOnAccount(account1, 10000);
             bankMillenium.paymentOnAccount(account3, 10000);
             bankBGZBNPParibas.paymentOnAccount(account2, 10000);
             System.Console.WriteLine("BankAccount1: " + account1.balance);
             System.Console.WriteLine("BankAccount2: " + account2.balance);
             System.Console.WriteLine("BankAccount3: " + account3.balance);
+
+            System.Console.WriteLine("Client 1 Bank Number: " + client1BankNumber);
+            System.Console.WriteLine("Client 2 Bank Number: " + client2BankNumber);
+            System.Console.WriteLine("Client 3 Bank Number: " + client3BankNumber);
 
             bankMillenium.crossbankMoneyTransfer(account1, bankBGZBNPParibas.id, account2.getAccountNumber(), 3000);
             KIR.Instance.performElixirSession();
