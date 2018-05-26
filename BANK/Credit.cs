@@ -49,7 +49,7 @@ namespace Bank
 
         public void closeCredit()
         {
-            this._bankAccountConnectedWithCredit.balance = 0;
+            this.balance = 0;
         }
     }
 }

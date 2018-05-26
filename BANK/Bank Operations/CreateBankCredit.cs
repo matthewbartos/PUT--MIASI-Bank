@@ -17,7 +17,7 @@ namespace Bank
             String number = Bank.generateUniqueAccountNumber();
             Credit bankCredit = new Credit(number, account);
             TakeLoan loanOperation = new TakeLoan();
-            loanOperation.SetOperationData(bankCredit, null, new DateTime(), 10000);
+            loanOperation.SetOperationData(bankCredit, null, new DateTime(), creditValue);
             loanOperation.Execute();
 
             client.addBankProduct(bankCredit);
