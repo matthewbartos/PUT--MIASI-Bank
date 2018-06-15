@@ -35,9 +35,16 @@ namespace Bank
         }
 
         public static String generateUniqueAccountNumber() {
+<<<<<<< HEAD
             //var chars = "0123456789";
             //var stringChars = new char[9];
             //var random = new Random();
+=======
+            var chars = "0123456789";
+            var stringChars = new char[9];
+            System.Threading.Thread.Sleep(1);
+            var random = new Random(System.DateTime.Now.Millisecond);
+>>>>>>> 2307273b88594a1417118311228d63b0ebbe5f27
 
             //for (int i = 0; i<stringChars.Length; i++)
             //{
@@ -61,23 +68,25 @@ namespace Bank
             operation.Create();
         }
 
-        public void createBankCredit(BankAccount account, Client client) {
-            //String number = generateUniqueAccountNumber();
-            //Credit bankCredit = new Credit(number, account);
-            //bankProducts.Add(bankCredit);
-            IBankCreate operation = new CreateBankCredit();
+        public void createBankCredit(BankAccount account, Client client, float creditValue) {
+            CreateBankCredit operation = new CreateBankCredit();
             operation.SetOperationData(account, this, client);
+            operation.SetCreditValue(creditValue);
             operation.Create();
         }
 
-        public void createDeposit(BankAccount account, Client client) {
+        public void createDeposit(BankAccount account, Client client, float depositValue) {
             //String number = generateUniqueAccountNumber();
             //Deposit deposit = new Deposit(number, account);
             //bankProducts.Add(deposit);
-            IBankCreate operation = new CreateDeposit();
+    
+            CreateDeposit operation = new CreateDeposit();
             operation.SetOperationData(account, this, client);
+            operation.SetDepositValue(depositValue);
             operation.Create();
         }
+
+       
 
         public void transferMoney(BankAccount source, BankAccount destination, float value) {
 
@@ -88,6 +97,20 @@ namespace Bank
             source.addOperation(operation);
             destination.addOperation(operation);
             historyManager.addBankOperation(operation);
+        }
+        public void paymentOnCredit(BankAccount account, float rate)
+        {
+            PaymentOnAccount operation = new PaymentOnAccount();
+            operation.SetOperationValue(account, new DateTime(), rate);
+            operation.Execute();
+
+            account.addOperation(operation);
+            historyManager.addBankOperation(operation);
+        }
+
+        public void closeDeposit(BankAccount account)
+        {
+           
         }
 
         public void paymentOnAccount(BankAccount destination, float value) {
@@ -126,25 +149,16 @@ namespace Bank
             historyManager.addBankOperation(operation);
         }
 
-        public void closeDeposit(Deposit depositAccount) {
+        public void closeDeposit(Deposit depositAccount, BankAccount account) {
             //depositAccount.closeDeposit();
             //depositAccount = null;
+            account.addMoney(depositAccount.balance);
             IBankOperation operation = new CloseDeposit();
             operation.SetOperationData(depositAccount, null, null, 0);
             operation.Execute();
             depositAccount.addOperation(operation);
             historyManager.addBankOperation(operation);
 
-        }
-
-        public void takeLoan(Credit creditAccount, float value) {
-            //creditAccount.balance -= value;
-            //creditAccount.bankAccountConnectedWithCredit.balance += value;
-            IBankOperation operation = new TakeLoan();
-            operation.SetOperationData(creditAccount, null, null, value);
-            operation.Execute();
-            creditAccount.addOperation(operation);
-            historyManager.addBankOperation(operation);
         }
 
         public void crossbankMoneyTransfer(BankAccount source, string destinationBankId, string destinationNumber, float value) {

@@ -12,7 +12,8 @@ namespace Bank
 
 		public override void SetOperationData(BankProduct bankProductSource = null, BankProduct bankProductDestination = null, DateTime? date = null, float value = 0)
 		{
-            throw new NotImplementedException();
+            this.bankProductSource = bankProductSource;
+          //  this.date = date;
 		}
 
 		public override void Execute()

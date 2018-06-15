@@ -6,6 +6,7 @@ namespace Bank
     {
         Bank bank;
         Client client;
+
         public void Create()
         {
             String number = Bank.generateUniqueAccountNumber();
@@ -19,5 +20,6 @@ namespace Bank
             this.bank = bank;
             this.client = client;
         }
+
     }
 }

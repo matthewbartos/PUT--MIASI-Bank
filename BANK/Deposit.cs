@@ -22,9 +22,11 @@ namespace Bank
             }
         }
 
-        public Deposit(string number, BankAccount bankAccount) : base(number) {
-            this.income = 0;
+        public Deposit(string number, BankAccount bankAccount, float initial) : base(number) {
+            //this.income = 0;
             this._bankAccountConnectedWithDeposit = bankAccount;
+            this.setPercentageMechanism(new LinearPercentage(2));
+            this.initialPayment = initial;
         }
 
         public BankAccount bankAccountConnectedWithDeposit {
@@ -40,10 +42,19 @@ namespace Bank
             if (DateTime.Now.CompareTo(expirationDate) < 0) { // zamykamy przed czasem
                 this.bankAccountConnectedWithDeposit.balance += initialPayment;
             } else {
+                income = Math.Abs(this.calculatePercentage());
                 this.bankAccountConnectedWithDeposit.balance += initialPayment + income;
             }
             this.initialPayment = 0;
             this.income = 0;
-        } 
+        }
+
+       public void setInitialPayment(float init)
+        {
+            this.initialPayment = init;
+        }
+
+
+
     }
 }

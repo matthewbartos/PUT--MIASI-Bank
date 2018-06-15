@@ -23,9 +23,9 @@ namespace Bank
             this.percentageMechanism = new LinearPercentage(2.0f);
         }
 
-        public void calculatePercentage() { // timer bedzie wywolywac te funkcje co jakis czas
-            var income = this.percentageMechanism.calculate(balance);
-            balance += income;
+        public float calculatePercentage() { // timer bedzie wywolywac te funkcje co jakis czas
+            return this.percentageMechanism.calculate(balance);
+            //balance += income;
         }
 
         public void setPercentageMechanism(Percentage mechanism) {

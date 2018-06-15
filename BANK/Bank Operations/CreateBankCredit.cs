@@ -10,12 +10,19 @@ namespace Bank
         Bank bank;
         BankAccount account;
         Client client;
+        float creditValue;
+
         public void Create()
         {
             String number = Bank.generateUniqueAccountNumber();
             Credit bankCredit = new Credit(number, account);
+            TakeLoan loanOperation = new TakeLoan();
+            loanOperation.SetOperationData(bankCredit, null, new DateTime(), creditValue);
+            loanOperation.Execute();
+
             client.addBankProduct(bankCredit);
             bank.bankProducts.Add(bankCredit);
+            bank.historyManager.addBankOperation(loanOperation);
         }
 
         public void SetOperationData(BankAccount account, Bank bank, Client client)
@@ -23,6 +30,11 @@ namespace Bank
             this.account = account;
             this.bank = bank;
             this.client = client;
+        }
+
+        public void SetCreditValue(float value)
+        {
+            this.creditValue = value;
         }
     }
 }

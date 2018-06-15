@@ -5,19 +5,26 @@ using System.Text;
 namespace Bank
 {
 
-    class CreditOperation : BankOperation
+    class CreditOperation : IBankOperation
     {
-        private BankProduct bankProductSource;
-        private DateTime date;
+        BankAccount account;
+        Bank bank;
+        Client client;
 
-        public override void Execute()
+        public void Execute()
         {
-            throw new NotImplementedException();
+            String number = Bank.generateUniqueAccountNumber();
+            Credit credit = new Credit(number, account);
+            credit.balance = balance;
+            client.addBankProduct(credit);
+            bank.bankProducts.Add(credit);
         }
 
-        public override void SetOperationData(BankProduct bankProductSource = null, BankProduct bankProductDestination = null, DateTime? date = null, float value = 0)
+        public void SetOperationData(BankProduct bankProductSource = null, BankProduct bankProductDestination = null, DateTime? date = null, float value = 0)
         {
-            throw new NotImplementedException();
+            this.account = account;
+            this.bank = bank;
+            this.client = client;
         }
     }
 }
