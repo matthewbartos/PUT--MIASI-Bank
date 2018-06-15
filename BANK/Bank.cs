@@ -23,9 +23,10 @@ namespace Bank
         private String generateUniqueBankId() {
             var chars = "QWERTYUIOPASDFGHJKLZXCVBNM0123456789";
             var stringChars = new char[35];
-            var random = new Random();
+            System.Threading.Thread.Sleep(1);
+            var random = new Random(System.DateTime.Now.Millisecond);
 
-            for (int i = 0; i<stringChars.Length; i++)
+            for (int i = 0; i < stringChars.Length; i++)
             {
                 stringChars[i] = chars[random.Next(chars.Length)];
             }
